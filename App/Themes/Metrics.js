@@ -4,18 +4,18 @@ const { width, height } = Dimensions.get('window')
 
 // Used via Metrics.baseMargin
 const metrics = {
-  marginHorizontal: 10,
-  marginVertical: 10,
-  section: 25,
-  baseMargin: 10,
-  doubleBaseMargin: 20,
-  smallMargin: 5,
-  doubleSection: 50,
-  horizontalLineHeight: 1,
+  width: width,
+  height: height,
+  marginHorizontal: 20,
+  marginVertical: 30,
+  smallPadding: 15,
+  medPadding: 20,
+  largePadding: 50,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
-  navBarHeight: (Platform.OS === 'ios') ? 64 : 54,
-  buttonRadius: 4,
+  navBarHeight: (Platform.OS === 'ios') ? 44 : 56,
+  roundedBorder: 20,
+  borderWidth: 2,
   icons: {
     tiny: 15,
     small: 20,
