@@ -17,8 +17,8 @@ const colors = {
     tagIconWeights: '#5D91D0',
     tagTextWeights: '#0B55B5',
     tagBackgroundCardio: '#EDEAF6',
-    tagIconCardio: '#6751B0',
-    tagTextCardio: '#998ACA',
+    tagIconCardio: '#998ACA',
+    tagTextCardio: '#6751B0',
     tagBackgroundKickboxing: '#FFEBE5',
     tagIconKickboxing: '#FE8955',
     tagTextKickboxing: '#FD5000',
@@ -28,6 +28,9 @@ const colors = {
     tagBackgroundGeneral: '#E8F8FB',
     tagIconGeneral: '#64CEE1',
     tagTextGeneral: '#17B5D1',
+    tagBackgroundYoga: '#FFEDD4',
+    tagIconYoga: '#FFBE62',
+    tagTextYoga: '#FFA21F',
   }
   
   export default colors

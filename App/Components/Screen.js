@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: StatusBar.currentHeight, 
         paddingVertical: 150,
-        paddingHorizontal: 20,
+        paddingHorizontal: '10%',
         backgroundColor: colors.background, 
         flex: 1,
     },

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import  BottomTabNavigator  from './App/Navigation/BottomTabNavigator';
 import AppLoading from 'expo-app-loading';
-import ActivityButton from './App/Components/ActivityButton';
 import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
 
 export default function App() {
@@ -15,9 +14,6 @@ export default function App() {
   if (!fontLoaded) {
     return <AppLoading />;
   }
-  let props = {
-    name:"Weights",
-  }
-  return (<ActivityButton {...props} />);
+  return (<BottomTabNavigator />);
   //  return (<BottomTabNavigator />);
 }
