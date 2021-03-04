@@ -6,7 +6,7 @@ import DefaultButton from '../Components/DefaultButton'
 
 export default function HomeScreen() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.selectedCategory}>
 
           <Text>label here</Text>
@@ -15,7 +15,7 @@ export default function HomeScreen() {
         <SpotterCard />
         <DefaultButton text={"Secure Spotter"}/>
 
-      </View>
+      </SafeAreaView>
       
 
     );
