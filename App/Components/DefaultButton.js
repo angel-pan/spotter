@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 import colors from '../Themes/Colors';
+import metrics from '../Themes/Metrics';
 
 const DefaultButton = ({text, onPress}) => {
     return (
@@ -16,8 +17,8 @@ const DefaultButton = ({text, onPress}) => {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: colors.orange,
-        paddingHorizontal: 30,
-        paddingVertical: 12,
+        paddingHorizontal: metrics.screenWidth * 0.08,
+        paddingVertical: metrics.screenHeight * 0.012,
         borderRadius: 100,
         shadowOffset: {
             width: 0,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     text: {
         color: colors.white,
         fontFamily: 'OpenSans_600SemiBold',
-        fontSize: 17.31
+        fontSize: metrics.screenHeight * 0.02
     }
 });
 

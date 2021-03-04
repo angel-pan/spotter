@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Images, Profiles, Metrics } from '../Themes';
+import DefaultTag from './DefaultTag';
 
 
-export default function SpotterCard(props) {
+export default function SpotterCard({endorsements}) {
     return (
       <SafeAreaView style={styles.container}>
         <View style = {styles.profileCard}>
@@ -18,7 +19,11 @@ export default function SpotterCard(props) {
           <View style = {styles.spotterEndorsements}>
             <Text style = {{fontSize: 22, fontWeight: 'bold'}}>Endorsements: </Text>
             <Text> </Text>
-            <Text> hihi </Text>
+            <View style = {styles.endorsementList}>
+            {endorsements.map((endorsement) => 
+              <DefaultTag text={endorsement} type='endorsement' />
+            )}
+            </View>
             
           </View>
         </View>
@@ -70,5 +75,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: Metrics.medPadding,
     paddingTop: Metrics.smallPadding,
   },
+
+  endorsementList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+
+  }
 
 });

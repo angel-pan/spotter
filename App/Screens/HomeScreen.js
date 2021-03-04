@@ -4,6 +4,8 @@ import { Images, Profiles, Metrics } from '../Themes';
 import SpotterCard from '../Components/SpotterCard';
 import DefaultButton from '../Components/DefaultButton'
 
+const endorsements = ['Friendly', 'Patient', 'Knowledgeable'];
+
 export default function HomeScreen() {
     return (
       <SafeAreaView style={styles.container}>
@@ -12,8 +14,8 @@ export default function HomeScreen() {
           <Text>label here</Text>
         </View>
 
-        <SpotterCard />
-        <DefaultButton text={"Secure Spotter"}/>
+        <SpotterCard endorsements={endorsements} />
+        <DefaultButton text={"Secure Spotter"} />
 
       </SafeAreaView>
       

@@ -6,6 +6,7 @@ import LoadingDots from '../Components/LoadingDots';
 import ActivityButton from '../Components/ActivityButton';
 import DefaultButton from '../Components/DefaultButton';
 import colors from '../Themes/Colors';
+import metrics from '../Themes/Metrics';
 
 export default class MatchLoadingScreen extends React.Component{
   constructor(props) {
@@ -18,7 +19,7 @@ export default class MatchLoadingScreen extends React.Component{
         this.props.navigation.navigate("Match Profiles", 
           {name: this.props.route.params.name})
       }
-    }, 5000);
+    }, 2000);
   }
 
   render() {
@@ -45,7 +46,7 @@ export default class MatchLoadingScreen extends React.Component{
 const styles = StyleSheet.create({
     text: {
         fontFamily: 'OpenSans_600SemiBold',
-        fontSize: 35,
+        fontSize: metrics.screenHeight * 0.045,
         letterSpacing: 0.4
     },
     container: {
