@@ -3,16 +3,19 @@ import { View, Text, StyleSheet } from 'react-native';
 import SearchBar from '../Components/SearchBar';
 import ActivityButton from '../Components/ActivityButton';
 import Screen from '../Components/Screen';
+import colors from '../Themes/Colors';
 
-const items = ["Weights", "Yoga", "Diet", "Cardio", "Kickboxing", "General"];
+const categories = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
 
-export default function MatchScreen() {
+export default function MatchScreen({navigation}) {
     return (
       <Screen>
         <Text style={styles.text}>What do you need help in today?</Text>
         <SearchBar />
         <View style={styles.activityList}>
-          {items.map((item) => <ActivityButton name={item}/>)}
+          {categories.map((item) => <ActivityButton name={item} onPress={() => {
+            navigation.navigate('Loading Match', {name: item})
+          }}/>)}
         </View>
       </Screen>
     );
@@ -20,17 +23,17 @@ export default function MatchScreen() {
 
 const styles = StyleSheet.create({
   activityList: {
-    maxHeight: '100%',
     flexWrap: 'wrap',
-    flexDirection: 'column',
-    alignContent: 'center'
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   text: {
     fontFamily: 'OpenSans_700Bold',
     fontSize: 30,
     textAlign: 'center',
     letterSpacing: 0.4,
-    marginBottom: "8%"
+    marginBottom: "8%",
+    color: colors.black
   }
 
 });

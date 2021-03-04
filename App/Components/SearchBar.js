@@ -1,4 +1,3 @@
-import { color } from 'jimp';
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import colors from '../Themes/Colors';

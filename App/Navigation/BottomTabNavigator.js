@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors from '../Themes/Colors';
 import Icon from '../Components/Icon';
 import HomeScreen from '../Screens/HomeScreen';
-import MatchScreen from '../Screens/MatchScreen';
+import MatchStackNavigator from './MatchStackNavigator';
 import BrowseScreen from '../Screens/BrowseScreen';
 import NotesScreen from '../Screens/NotesScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
@@ -34,7 +34,7 @@ export default function BottomTabNavigator() {
             }
         })}
         tabBarOptions = {{
-            style: {height: 120, backgroundColor: colors.background},
+            style: {height: "12%", backgroundColor: colors.background},
             activeTintColor: colors.orange,
             inactiveTintColor: colors.gray,
             labelStyle: {
@@ -44,7 +44,7 @@ export default function BottomTabNavigator() {
             },
         }}>
             <Tab.Screen name='Home' component={HomeScreen} />
-            <Tab.Screen name='Find Match' component={MatchScreen} />
+            <Tab.Screen name='Find Match' component={MatchStackNavigator} />
             <Tab.Screen name='Browse' component={BrowseScreen} />
             <Tab.Screen name='Notes' component={NotesScreen} />
             <Tab.Screen name='Profile' component={ProfileScreen} />

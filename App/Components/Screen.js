@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet} from 'react-native';
 import colors from '../Themes/Colors';
+import Constants from 'expo-constants';
 
 const Screen = ({children}) => {
     return <View style={styles.container}>{children}</View>;
@@ -8,11 +9,12 @@ const Screen = ({children}) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: StatusBar.currentHeight, 
-        paddingVertical: 150,
+        marginTop: Constants.statusBarHeight, 
+        paddingVertical: '10%',
         paddingHorizontal: '10%',
         backgroundColor: colors.background, 
         flex: 1,
+        justifyContent: 'center',
     },
 });
 

@@ -2,14 +2,14 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
 import colors from '../Themes/Colors';
 import Icon from '../Components/Icon';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
-const ActivityButton = (props) => {
+const ActivityButton = ({name, onPress}) => {
   const styles = StyleSheet.create({
     container: {
       justifyContent: 'center',
@@ -17,29 +17,37 @@ const ActivityButton = (props) => {
       height: 117,
       width: 147,
       borderRadius: 10,
-      backgroundColor: colors['tagBackground' + props.name],
+      backgroundColor: colors[`tagBackground${name}`],
       marginHorizontal: 8,
-      marginTop: 26
+      marginTop: 26,
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.12,
+      shadowRadius: 2.22,
+      
+      elevation: 2,
     },
   
     label: {
       fontFamily: 'OpenSans_400Regular',
       fontSize: 17.25,
-      color: colors['tagText' + props.name]
+      color: colors[`tagText${name}`]
     },
   });
 
   return (
-        <View style={styles.container}>
-        <Icon
-          name={props.name}
-          fill={colors['tagIcon' + props.name]}
-          stroke={colors['tagIcon' + props.name]}
-          width={50}
-          height={50}
-        />
-          <Text style={styles.label}>{props.name}</Text>
-        </View>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
+          <Icon
+            name={name}
+            fill={colors[`tagIcon${name}`]}
+            stroke={colors[`tagIcon${name}`]}
+            width={50}
+            height={50}
+          />
+          <Text style={styles.label}>{name}</Text>
+        </TouchableOpacity>
   );
 }
 
