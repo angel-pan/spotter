@@ -2,18 +2,18 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
 
 
 export default function SpotterCard({endorsements}) {
   let [fontsLoaded] = useFonts({
-    OpenSans_300Light, 
-    OpenSans_400Regular, 
-    OpenSans_600SemiBold, 
+    OpenSans_300Light,
+    OpenSans_400Regular,
+    OpenSans_600SemiBold,
     OpenSans_700Bold
-  });  
-  
+  });
+
   return (
     <View style = {styles.profileCard}>
       <Image style = {styles.spotterImg} source={Images.amy}/>
@@ -32,11 +32,11 @@ export default function SpotterCard({endorsements}) {
         <Text style = {styles.endorseHeader}>Endorsements: </Text>
         <Text> </Text>
         <View style = {styles.endorsementList}>
-        {endorsements.map((endorsement) => 
+        {endorsements.map((endorsement) =>
           <DefaultTag text={endorsement} type='endorsement' />
         )}
         </View>
-        
+
       </View>
     </View>
   );
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
 
   spotterBlurbText:{
-    fontSize: 18, 
+    fontSize: 18,
     paddingTop: Metrics.smallPadding,
     fontFamily: 'OpenSans_400Regular'
 
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   },
 
   endorseHeader:{
-    fontSize: 22, 
+    fontSize: 22,
     fontFamily:'OpenSans_600SemiBold',
   },
 
