@@ -18,7 +18,7 @@ export default function SpotterCard(props) {
           <View style = {styles.spotterEndorsements}>
             <Text style = {{fontSize: 22, fontWeight: 'bold'}}>Endorsements: </Text>
             <Text> </Text>
-            <Text> hi </Text>
+            <Text> hihi </Text>
             
           </View>
         </View>
