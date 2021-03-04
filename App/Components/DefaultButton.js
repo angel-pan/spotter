@@ -2,6 +2,8 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, Text } from 'react-native';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
+import { useFonts,  OpenSans_600SemiBold} from '@expo-google-fonts/open-sans';
+
 
 const DefaultButton = ({text, onPress}) => {
     return (

@@ -9,13 +9,7 @@ const endorsements = ['Friendly', 'Patient', 'Knowledgeable'];
 export default function HomeScreen() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.selectedCategory}>
-
-          <Text>label here</Text>
-        </View>
-
-        <SpotterCard endorsements={endorsements} />
-        <DefaultButton text={"Secure Spotter"} />
+        <Text>Welcome to the home screen!</Text>
 
       </SafeAreaView>
       
@@ -30,22 +24,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
-  selectedCategory: {
-    backgroundColor: 'blue',
-  },
-
-  spotterView: {
-    flex: 1,
-  },
-
-  buttonView:{
-    flex: 1,
-  },
-
-  dotsView:{
-    flex: 1,
-  }
-
 
 });

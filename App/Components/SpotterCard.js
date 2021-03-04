@@ -3,37 +3,43 @@ import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'r
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import { Ionicons } from '@expo/vector-icons'; 
+import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
 
 
 export default function SpotterCard({endorsements}) {
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style = {styles.profileCard}>
-          <Image style = {styles.spotterImg} source={Images.amy}/>
+  let [fontsLoaded] = useFonts({
+    OpenSans_300Light, 
+    OpenSans_400Regular, 
+    OpenSans_600SemiBold, 
+    OpenSans_700Bold
+  });  
+  
+  return (
+    <View style = {styles.profileCard}>
+      <Image style = {styles.spotterImg} source={Images.amy}/>
 
 
-          <View style = {styles.spotterInfo}>
-            <View style={styles.spotterRow}>
-              <Text style = {styles.spotterNameText}>Amy Anderson</Text>
-              <Ionicons name="information-circle" size={30} color={Colors.orange} style={{justifyContent: 'flex-end'}} />
-            </View>
-
-            <Text style = {{fontSize: 18, paddingTop: Metrics.smallPadding}}>Hi I'm Amy! Looking forward to teaching you what I know.</Text>
-          </View>
-
-          <View style = {styles.spotterEndorsements}>
-            <Text style = {{fontSize: 22, fontWeight: 'bold'}}>Endorsements: </Text>
-            <Text> </Text>
-            <View style = {styles.endorsementList}>
-            {endorsements.map((endorsement) => 
-              <DefaultTag text={endorsement} type='endorsement' />
-            )}
-            </View>
-            
-          </View>
+      <View style = {styles.spotterInfo}>
+        <View style={styles.spotterRow}>
+          <Text style = {styles.spotterNameText}>Amy Anderson</Text>
+          <Ionicons name="information-circle" size={30} color={Colors.orange} style={{justifyContent: 'flex-end'}} />
         </View>
-      </SafeAreaView>
-    );
+
+        <Text style = {styles.spotterBlurbText}>Hi I'm Amy! Looking forward to teaching you what I know.</Text>
+      </View>
+
+      <View style = {styles.spotterEndorsements}>
+        <Text style = {styles.endorseHeader}>Endorsements: </Text>
+        <Text> </Text>
+        <View style = {styles.endorsementList}>
+        {endorsements.map((endorsement) => 
+          <DefaultTag text={endorsement} type='endorsement' />
+        )}
+        </View>
+        
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -45,7 +51,7 @@ const styles = StyleSheet.create({
   },
 
   profileCard:{
-    height: Metrics.screenHeight*0.6,
+    height: Metrics.screenHeight*0.57,
     width: Metrics.screenWidth*0.9,
     alignItems: 'flex-start',
     //borderWidth: 1,
@@ -74,19 +80,32 @@ const styles = StyleSheet.create({
   spotterRow:{
     paddingTop: Metrics.smallPadding,
     flexDirection: 'row',
-    //justifyContent: 'space-around',
+    justifyContent: 'space-around',
     //alignItems: 'center',
+    //backgroundColor:'cyan',
   },
 
   spotterNameText:{
     fontSize: 28,
-    fontWeight:'bold',
+    fontFamily:'OpenSans_700Bold',
+  },
+
+  spotterBlurbText:{
+    fontSize: 18, 
+    paddingTop: Metrics.smallPadding,
+    fontFamily: 'OpenSans_400Regular'
+
   },
 
   spotterEndorsements:{
     alignItems: 'flex-start',
     paddingHorizontal: Metrics.medPadding,
     paddingTop: Metrics.smallPadding,
+  },
+
+  endorseHeader:{
+    fontSize: 22, 
+    fontFamily:'OpenSans_600SemiBold',
   },
 
   endorsementList: {
