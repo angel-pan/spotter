@@ -1,28 +1,23 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView } from 'react-native';
 import { Images, Profiles, Metrics } from '../Themes';
+import SpotterCard from '../Components/SpotterCard';
+import DefaultButton from '../Components/DefaultButton'
 
 export default function HomeScreen() {
     return (
-      <SafeAreaView style={styles.container}>
-        <View style = {styles.profileCard}>
-          <Image style = {styles.spotterImg} source={Images.amy}/>
+      <View style={styles.container}>
+        <View style={styles.selectedCategory}>
 
-
-          <View style = {styles.spotterInfo}>
-            <Text style = {styles.spotterNameText}>Amy Anderson</Text>
-            <Text></Text>
-            <Text style = {{fontSize: 18}}>Hi I'm Amy! Looking forward to teaching you what I know.</Text>
-          </View>
-
-          <View style = {styles.spotterEndorsements}>
-            <Text style = {{fontSize: 22, fontWeight: 'bold'}}>Endorsements: </Text>
-            <Text> </Text>
-            <Text> hi </Text>
-            
-          </View>
+          <Text>label here</Text>
         </View>
-      </SafeAreaView>
+
+        <SpotterCard />
+        <DefaultButton text={"Secure Spotter"}/>
+
+      </View>
+      
+
     );
 }
 
@@ -34,46 +29,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  // profileView: {
-  //   //flex: 6,
-  //   padding: Metrics.doubleBaseMargin,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-
-
-  profileCard:{
-    //height: Metrics.screenHeight*0.6,
-    width: Metrics.screenWidth*0.9,
-    alignItems: 'flex-start',
-    //borderWidth: 1,
-    //borderColor: '#C5C5C5',
-    backgroundColor: 'white',
-    borderRadius: Metrics.roundedBorder,
+  selectedCategory: {
+    backgroundColor: 'blue',
   },
 
-  spotterImg:{
-    //aspectRatio: 1,
-    height: '60%',
-    width: Metrics.screenWidth*0.9,
-    borderTopLeftRadius: Metrics.roundedBorder,
-    borderTopRightRadius: Metrics.roundedBorder,
-    //resizeMode: 'contain',
+  spotterView: {
+    flex: 1,
   },
 
-  spotterInfo:{
-    alignItems: 'flex-start',
-    padding: Metrics.medPadding,
+  buttonView:{
+    flex: 1,
   },
 
-  spotterNameText:{
-    fontSize: 30,
-    fontWeight:'bold',
-  },
+  dotsView:{
+    flex: 1,
+  }
 
-  spotterEndorsements:{
-    alignItems: 'flex-start',
-    padding: Metrics.medPadding,
-  },
 
 });

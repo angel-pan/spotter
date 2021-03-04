@@ -8,7 +8,7 @@ const metrics = {
   height: height,
   marginHorizontal: 20,
   marginVertical: 30,
-  smallPadding: 15,
+  smallPadding: 10,
   medPadding: 20,
   largePadding: 50,
   screenWidth: width < height ? width : height,
