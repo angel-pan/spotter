@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Images, Profiles, Metrics } from '../Themes';
+import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity, ColorPropType } from 'react-native';
+import { Images, Profiles, Metrics, Colors } from '../Themes';
+import { Ionicons } from '@expo/vector-icons'; 
 
 
 export default function SpotterCard(props) {
@@ -11,14 +12,18 @@ export default function SpotterCard(props) {
 
 
           <View style = {styles.spotterInfo}>
-            <Text style = {styles.spotterNameText}>Amy Anderson</Text>
+            <View style={styles.spotterRow}>
+              <Text style = {styles.spotterNameText}>Amy Anderson</Text>
+              <Ionicons name="information-circle" size={30} color={Colors.orange} style={{justifyContent: 'flex-end'}} />
+            </View>
+
             <Text style = {{fontSize: 18, paddingTop: Metrics.smallPadding}}>Hi I'm Amy! Looking forward to teaching you what I know.</Text>
           </View>
 
           <View style = {styles.spotterEndorsements}>
             <Text style = {{fontSize: 22, fontWeight: 'bold'}}>Endorsements: </Text>
             <Text> </Text>
-            <Text> hihi </Text>
+            <Text> hi </Text>
             
           </View>
         </View>
@@ -55,9 +60,17 @@ const styles = StyleSheet.create({
 
   spotterInfo:{
     alignItems: 'flex-start',
+    justifyContent: 'space-between',
     paddingHorizontal: Metrics.medPadding,
     paddingTop: Metrics.smallPadding,
     paddingBottom: Metrics.smallPadding,
+  },
+
+  spotterRow:{
+    paddingTop: Metrics.smallPadding,
+    flexDirection: 'row',
+    //justifyContent: 'space-around',
+    //alignItems: 'center',
   },
 
   spotterNameText:{
