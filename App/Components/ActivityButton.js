@@ -3,9 +3,10 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../Themes/Colors';
 import Icon from '../Components/Icon';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import metrics from '../Themes/Metrics';
 
 
 
@@ -14,12 +15,12 @@ const ActivityButton = ({name, onPress}) => {
     container: {
       justifyContent: 'center',
       alignItems: 'center',
-      height: 117,
-      width: 147,
+      height: metrics.screenHeight * .15,
+      width: metrics.screenWidth * .35,
       borderRadius: 10,
       backgroundColor: colors[`tagBackground${name}`],
       marginHorizontal: 8,
-      marginTop: 26,
+      marginTop: metrics.screenWidth * .05,
       shadowOffset: {
         width: 0,
         height: 1,
@@ -32,7 +33,7 @@ const ActivityButton = ({name, onPress}) => {
   
     label: {
       fontFamily: 'OpenSans_400Regular',
-      fontSize: 17.25,
+      fontSize: metrics.screenHeight * 0.020,
       color: colors[`tagText${name}`]
     },
   });
@@ -43,8 +44,8 @@ const ActivityButton = ({name, onPress}) => {
             name={name}
             fill={colors[`tagIcon${name}`]}
             stroke={colors[`tagIcon${name}`]}
-            width={50}
-            height={50}
+            width={metrics.screenHeight * .06}
+            height={metrics.screenHeight * .06}
           />
           <Text style={styles.label}>{name}</Text>
         </TouchableOpacity>

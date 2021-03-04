@@ -4,6 +4,7 @@ import SearchBar from '../Components/SearchBar';
 import ActivityButton from '../Components/ActivityButton';
 import Screen from '../Components/Screen';
 import colors from '../Themes/Colors';
+import metrics from '../Themes/Metrics';
 
 const categories = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
 
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'OpenSans_700Bold',
-    fontSize: 30,
+    fontSize: metrics.screenHeight * 0.035,
     textAlign: 'center',
     letterSpacing: 0.4,
     marginBottom: "8%",
