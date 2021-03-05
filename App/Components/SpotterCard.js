@@ -7,12 +7,6 @@ import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold
 import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterCard({endorsements}) {
-  let [fontsLoaded] = useFonts({
-    OpenSans_300Light,
-    OpenSans_400Regular,
-    OpenSans_600SemiBold,
-    OpenSans_700Bold
-  });
 
   const navigation = useNavigation();
 
