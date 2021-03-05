@@ -1,6 +1,7 @@
 import * as React from 'react';
 import  BottomTabNavigator  from './App/Navigation/BottomTabNavigator';
 import AppLoading from 'expo-app-loading';
+import MatchBioScreen from './App/Screens/MatchBioScreen';
 import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
   if (!fontLoaded) {
     return <AppLoading />;
   }
+  return (<MatchBioScreen />);
   return (<BottomTabNavigator />);
   //  return (<BottomTabNavigator />);
 }

@@ -27,10 +27,10 @@ const ActivityButton = ({name, onPress}) => {
       },
       shadowOpacity: 0.12,
       shadowRadius: 2.22,
-      
+
       elevation: 2,
     },
-  
+
     label: {
       fontFamily: 'OpenSans_400Regular',
       fontSize: metrics.screenHeight * 0.020,
