@@ -10,7 +10,7 @@ const metrics = {
   marginVertical: 30,
   smallPadding: 10,
   medPadding: 20,
-  largePadding: 50,
+  largePadding: 40,
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
   navBarHeight: (Platform.OS === 'ios') ? 44 : 56,

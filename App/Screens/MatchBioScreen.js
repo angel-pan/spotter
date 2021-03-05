@@ -3,26 +3,27 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import ActivityButton from '../Components/ActivityButton';
 import Screen from '../Components/Screen';
 import colors from '../Themes/Colors';
-import metrics from '../Themes/Metrics';
 import Icon from '../Components/Icon';
 import { Images, Profiles, Metrics, Colors } from '../Themes';
+import SpotterProfileTop from '../Components/SpotterProfileTop';
 
 export default function MatchProfileScreen() {
     return(
-    <Screen>
-      <View style={styles.container}>
-        <View style={styles.top}>
-          <View style={styles.shadow}>
-            <Image style={styles.bioPic} source={Images.amy}/>
-          </View>
-          <Text style={styles.header}> Amy Anderson </Text>
-          <Text style={styles.text}>Bio Screen!</Text>
-        </View>
-        <View style={styles.bottom}>
-          <Text> bottom </Text>
-        </View>
-      </View>
-    </Screen>
+      <SpotterProfileTop/>
+    // <Screen>
+    //   <View style={styles.container}>
+    //     <View style={styles.top}>
+    //       <View style={styles.shadow}>
+    //         <Image style={styles.bioPic} source={Images.amy}/>
+    //       </View>
+    //       <Text style={styles.header}> Amy Anderson </Text>
+    //       <Text style={styles.text}>Bio Screen!</Text>
+    //     </View>
+    //     <View style={styles.bottom}>
+    //       <Text> bottom </Text>
+    //     </View>
+    //   </View>
+    // </Screen>
   );
 }
 
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     top:{
       flex: 4,
       alignItems: 'center',
-      width: metrics.screenWidth,
+      width: Metrics.screenWidth,
     },
 
     bottom:{
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     },
 
     bioPic:{
-      marginTop: metrics.screenHeight * 0.07,
+      marginTop: Metrics.screenHeight * 0.07,
       height: 124,
       width: 124,
       borderRadius: 101,
