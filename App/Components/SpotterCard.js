@@ -4,7 +4,7 @@ import { Images, Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterCard({endorsements}) {
   let [fontsLoaded] = useFonts({
@@ -14,6 +14,8 @@ export default function SpotterCard({endorsements}) {
     OpenSans_700Bold
   });
 
+  const navigation = useNavigation();
+
   return (
     <View style = {styles.profileCard}>
       <Image style = {styles.spotterImg} source={Images.amy}/>
@@ -22,7 +24,13 @@ export default function SpotterCard({endorsements}) {
       <View style = {styles.spotterInfo}>
         <View style={styles.spotterRow}>
           <Text style = {styles.spotterNameText}>Amy Anderson</Text>
-          <Ionicons name="information-circle" size={30} color={Colors.orange} style={{justifyContent: 'flex-end'}} />
+          <TouchableOpacity onPress={() => navigation.navigate('Match Bio') }>
+            <Ionicons 
+              name="information-circle" 
+              size={30} 
+              color={Colors.orange} 
+            />
+          </TouchableOpacity>
         </View>
 
         <Text style = {styles.spotterBlurbText}>Hi I'm Amy! Looking forward to teaching you what I know.</Text>
@@ -33,7 +41,7 @@ export default function SpotterCard({endorsements}) {
         <Text> </Text>
         <View style = {styles.endorsementList}>
         {endorsements.map((endorsement) =>
-          <DefaultTag text={endorsement} type='endorsement' />
+          <DefaultTag text={endorsement} type='endorsement' key={endorsement} />
         )}
         </View>
 

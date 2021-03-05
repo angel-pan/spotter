@@ -7,7 +7,7 @@ import metrics from '../Themes/Metrics';
 import Icon from '../Components/Icon';
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 
-export default function MatchProfileScreen({route}) {
+export default function MatchProfileScreen(props) {
     return(
     <Screen>
       <View style={styles.container}>

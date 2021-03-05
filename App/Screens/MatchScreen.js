@@ -14,7 +14,7 @@ export default function MatchScreen({navigation}) {
         <Text style={styles.text}>What do you need help in today?</Text>
         <SearchBar />
         <View style={styles.activityList}>
-          {categories.map((item) => <ActivityButton name={item} onPress={() => {
+          {categories.map((item) => <ActivityButton name={item} key={item} onPress={() => {
             navigation.navigate('Loading Match', {name: item})
           }}/>)}
         </View>
