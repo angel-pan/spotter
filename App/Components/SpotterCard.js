@@ -3,11 +3,9 @@ import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'r
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import { Ionicons } from '@expo/vector-icons';
-import { useFonts,  OpenSans_300Light, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
 import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterCard({endorsements}) {
-
   const navigation = useNavigation();
 
   return (

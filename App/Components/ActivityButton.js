@@ -19,7 +19,7 @@ const ActivityButton = ({name, onPress}) => {
       width: metrics.screenWidth * .35,
       borderRadius: 10,
       backgroundColor: colors[`tagBackground${name}`],
-      marginHorizontal: 8,
+      marginHorizontal: metrics.screenWidth * 0.02,
       marginTop: metrics.screenWidth * .05,
       shadowOffset: {
         width: 0,
