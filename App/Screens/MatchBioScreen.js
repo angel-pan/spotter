@@ -7,7 +7,7 @@ import metrics from '../Themes/Metrics';
 import Icon from '../Components/Icon';
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 
-export default function MatchProfileScreen(props) {
+export default function MatchProfileScreen() {
     return(
     <Screen>
       <View style={styles.container}>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.12,
       shadowRadius: 2.22,
 
-      elevation: 2,
+      //elevation: 2,
     },
 
     header:{
