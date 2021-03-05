@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View } from 'react-native';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 
@@ -29,12 +28,12 @@ const DefaultTag = ({text, onPress, type}) => {
         }
     })
     return (
-        <TouchableOpacity
+        <View
           style={styles.container}
           onPress={onPress}
         >
             <Text style={styles.text}>{text}</Text>
-        </TouchableOpacity>
+        </View>
     );
 }
 

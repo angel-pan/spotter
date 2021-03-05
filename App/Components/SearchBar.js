@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: '4%'
     },
     searchInput: {
         width: '100%',
         height: '100%',
-        paddingLeft: 10,
+        paddingLeft: '2%',
         fontSize: metrics.screenWidth * 0.035,
         fontFamily: 'OpenSans_400Regular',
         color: colors.grayText,
