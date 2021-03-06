@@ -12,13 +12,7 @@ export default function SpotterProfileTop(props){
                     <Image style={styles.bioPic} source={Images.amy}/>
                 </View>
                 <Text style={styles.header}> Amy Anderson </Text>
-                {/* <Text style={styles.text}>Bio Screen!</Text> */}
-                <DefaultButton text={"Secure Spotter"}/>
             </View>
-
-            {/* <View style={styles.bottom}>
-            <Text> bottom </Text>
-            </View> */}
         </View>
 
     );
@@ -27,7 +21,7 @@ export default function SpotterProfileTop(props){
 
 
 const styles = StyleSheet.create({
-    
+
     container: {
         flex: 1,
         alignItems: 'center',
@@ -37,11 +31,11 @@ const styles = StyleSheet.create({
         // flex: 2,
         alignItems: 'center',
         width: Metrics.screenWidth,
-        paddingTop: Metrics.largePadding,
+        paddingTop: Metrics.medPadding,
         paddingBottom: Metrics.medPadding,
         //backgroundColor: 'cyan',
       },
-    
+
     header:{
         fontSize: 30,
         fontFamily:'OpenSans_600SemiBold',
@@ -64,8 +58,6 @@ const styles = StyleSheet.create({
 
       elevation: 2,
     },
-
-
 
     bottom:{
       flex: 7,

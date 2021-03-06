@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
           },
           shadowOpacity: 0.12,
           shadowRadius: 2.22,
-          
+
           elevation: 2,
+        marginBottom: 15,
     },
     text: {
         color: colors.white,

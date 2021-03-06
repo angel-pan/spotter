@@ -6,10 +6,14 @@ import colors from '../Themes/Colors';
 import Icon from '../Components/Icon';
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 import SpotterProfileTop from '../Components/SpotterProfileTop';
+import SpotterProfileBottom from '../Components/SpotterProfileBottom';
 
 export default function MatchProfileScreen() {
     return(
-      <SpotterProfileTop/>
+      <View style={styles.container}>
+        <SpotterProfileTop/>
+        <SpotterProfileBottom/>
+      </View>
     // <Screen>
     //   <View style={styles.container}>
     //     <View style={styles.top}>

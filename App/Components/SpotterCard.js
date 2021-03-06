@@ -17,10 +17,10 @@ export default function SpotterCard({endorsements}) {
         <View style={styles.spotterRow}>
           <Text style = {styles.spotterNameText}>Amy Anderson</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Match Bio') }>
-            <Ionicons 
-              name="information-circle" 
-              size={30} 
-              color={Colors.orange} 
+            <Ionicons
+              name="information-circle"
+              size={30}
+              color={Colors.orange}
             />
           </TouchableOpacity>
         </View>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   spotterEndorsements:{
     alignItems: 'flex-start',
     paddingHorizontal: Metrics.medPadding,
-    paddingTop: Metrics.smallPadding,
+  //  paddingTop: Metrics.smallPadding,
   },
 
   endorseHeader:{
