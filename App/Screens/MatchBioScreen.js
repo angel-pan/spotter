@@ -7,12 +7,13 @@ import Icon from '../Components/Icon';
 import { Images, Profiles, Metrics, Colors } from '../Themes';
 import SpotterProfileTop from '../Components/SpotterProfileTop';
 import SpotterProfileBottom from '../Components/SpotterProfileBottom';
+import SpotterGuidelinesBottom from '../Components/SpotterGuidelinesBottom';
 
 export default function MatchProfileScreen() {
     return(
       <View style={styles.container}>
         <SpotterProfileTop/>
-        <SpotterProfileBottom/>
+        <SpotterGuidelinesBottom/>
       </View>
     // <Screen>
     //   <View style={styles.container}>

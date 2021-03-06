@@ -16,7 +16,7 @@ export default class MatchLoadingScreen extends React.Component{
   componentDidMount() {
     setTimeout(() => {
       if (!this.state.cancel) {
-        this.props.navigation.navigate("Match Profiles", 
+        this.props.navigation.navigate("Match Profiles",
           {name: this.props.route.params.name})
       }
     }, 2000);
@@ -54,5 +54,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between'
     }
-    
+
 })

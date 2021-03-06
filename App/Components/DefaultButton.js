@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
 
           elevation: 2,
         marginBottom: 15,
+        marginTop: 15,
     },
     text: {
         color: colors.white,
