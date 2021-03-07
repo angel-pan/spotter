@@ -4,12 +4,15 @@ import DefaultTag from '../Components/DefaultTag';
 import SpotterCard from '../Components/SpotterCard';
 import DefaultButton from '../Components/DefaultButton'
 import { Metrics } from '../Themes';
-
+import BackButton from '../Components/BackButton';
+import Screen from '../Components/Screen';
 
 const endorsements = ['Friendly', 'Patient', 'Knowledgeable'];
 
 export default function MatchProfileScreen({route}) {
     return (
+      <Screen>
+      <BackButton />
       <View style={styles.container}>
         <DefaultTag text={route.params.name}/>
 
@@ -19,6 +22,7 @@ export default function MatchProfileScreen({route}) {
 
         <DefaultButton text={"Secure Spotter"} />
       </View>
+      </Screen>
     );
 }
 
@@ -29,5 +33,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
 })
