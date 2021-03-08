@@ -5,14 +5,16 @@ import SpotterCard from '../Components/SpotterCard';
 import DefaultButton from '../Components/DefaultButton'
 import { Metrics } from '../Themes';
 import BackButton from '../Components/BackButton';
-import Screen from '../Components/Screen';
+import MoreButton from '../Components/MoreButton';
+import Screen from '../Components/Screen'; 
 
 const endorsements = ['Friendly', 'Patient', 'Knowledgeable'];
 
-export default function MatchProfileScreen({route}) {
+export default function MatchProfileScreen({navigation, route}) {
     return (
       <Screen>
-      <BackButton />
+      <BackButton onPress={()=> navigation.navigate('Find Match')}/>
+      <MoreButton />
       <View style={styles.container}>
         <DefaultTag text={route.params.name}/>
 
