@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Modal } from 'react-native';
 import DefaultTag from '../Components/DefaultTag';
 import SpotterCard from '../Components/SpotterCard';
 import DefaultButton from '../Components/DefaultButton'
@@ -7,14 +7,31 @@ import { Metrics } from '../Themes';
 import BackButton from '../Components/BackButton';
 import MoreButton from '../Components/MoreButton';
 import Screen from '../Components/Screen'; 
+import ReportModal from '../Components/ReportModal';
 
 const endorsements = ['Friendly', 'Patient', 'Knowledgeable'];
 
 export default function MatchProfileScreen({navigation, route}) {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const changeModalVisible=(bool) => {
+      setIsModalVisible(bool);
+    }
+
     return (
       <Screen>
       <BackButton onPress={()=> navigation.navigate('Find Match')}/>
-      <MoreButton />
+      
+      <MoreButton onPress={()=> setIsModalVisible(true)}/>
+      <Modal
+        transparent={true}
+        visible={isModalVisible}
+      >
+        <ReportModal 
+          changeModalVisible={changeModalVisible}
+        />
+      </Modal> 
+      
       <View style={styles.container}>
         <DefaultTag text={route.params.name}/>
 
