@@ -10,7 +10,7 @@ export default function SpotterCard({endorsements}) {
 
   return (
     <View style = {styles.profileCard}>
-      <Image style = {styles.spotterImg} source={Images.amy}/>
+      <Image style = {styles.spotterImg} source={{uri:Images.amy.uri}}/>
 
 
       <View style = {styles.spotterInfo}>

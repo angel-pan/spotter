@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
-import { Images, Profiles, Metrics, Colors } from '../Themes';
-import DefaultTag from './DefaultTag';
+import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
+import { Images, Metrics } from '../Themes';
+import colors from '../Themes/Colors';
+import images from '../Themes/Images';
+import metrics from '../Themes/Metrics';
 import DefaultButton from './DefaultButton';
 
 export default function SpotterGuidelinesBottom(props){
   return(
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView 
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{paddingBottom: '25%'}}
+      style={{paddingHorizontal: 3}}>
         <Text style={styles.header}> Instructions </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
@@ -15,11 +20,11 @@ export default function SpotterGuidelinesBottom(props){
           </View>
         </View>
         <Text style={styles.header}> How I Look Today </Text>
-        <View style={styles.shadow}>
-          <Image style={styles.picture} source={Images.amy_bio}/>
-        </View>
+        <Image style={styles.picture} source={{uri: images.amy_bio.uri}}/>
       </ScrollView>
-      <DefaultButton text={"Secure Spotter"}/>
+      <View style={styles.secureSpotter}>
+        <DefaultButton text={"Secure Spotter"}/>
+      </View>
     </View>
   )
 }
@@ -27,27 +32,25 @@ export default function SpotterGuidelinesBottom(props){
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      alignItems: 'center',
-      marginTop: -Metrics.screenHeight * 0.25,
+      alignItems: 'center'
   },
 
   picture:{
-    height: 252,
-    width: Metrics.screenWidth - 40,
+    height: 'auto',
+    width: '100%',
     borderRadius: 10,
-    marginHorizontal: 20,
+    resizeMode: 'contain',
+    aspectRatio: images.amy_bio.aspectRatio,
   },
 
   text:{
     fontSize: 15,
     fontFamily: 'OpenSans_400Regular',
-
   },
 
   header:{
     paddingTop: 15,
     paddingBottom: 10,
-    paddingHorizontal: 20,
     fontSize: 25,
     fontFamily:'OpenSans_600SemiBold',
   },
@@ -68,9 +71,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     marginBottom: 20,
-    marginHorizontal: 20,
-    width: Metrics.screenWidth * 0.9,
+    width: '100%',
     flexWrap: 'wrap',
-
   },
+  secureSpotter: {
+    position: 'absolute',
+    bottom: '1%',
+  }
 })

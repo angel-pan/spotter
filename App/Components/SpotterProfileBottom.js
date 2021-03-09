@@ -7,7 +7,10 @@ import DefaultButton from './DefaultButton';
 export default function SpotterProfileBottom(props){
   return(
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView 
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{paddingBottom: '25%'}}
+      style={{paddingHorizontal: 3}}>
         <Text style={styles.header}> Bio </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
@@ -30,14 +33,16 @@ export default function SpotterProfileBottom(props){
         <Text style={styles.header}> Endorsements </Text>
           <View style={styles.shadow}>
             <View style={styles.infoBox}>
-              <DefaultTag text='Friendly' type='endorsement' key='endorsement' />
-              <DefaultTag text='Patient' type='endorsement' key='endorsement' />
-              <DefaultTag text='Humble' type='endorsement' key='endorsement' />
-              <DefaultTag text='Expert' type='endorsement' key='endorsement' />
+              <DefaultTag text='Friendly' type='endorsement' />
+              <DefaultTag text='Patient' type='endorsement' />
+              <DefaultTag text='Humble' type='endorsement' />
+              <DefaultTag text='Expert' type='endorsement' />
             </View>
           </View>
         </ScrollView>
-          <DefaultButton text={"Secure Spotter"}/>
+        <View style={styles.secureSpotter}>
+          <DefaultButton  text={"Secure Spotter"}/>
+        </View>
     </View>
   );
 }
@@ -46,11 +51,10 @@ const styles = StyleSheet.create({
   container: {
       flex: 1,
       alignItems: 'center',
-      marginTop: -Metrics.screenHeight * 0.25,
   },
   inline:{
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   text:{
     fontSize: 15,
@@ -69,8 +73,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     marginBottom: 20,
-    marginHorizontal: 20,
-    width: Metrics.screenWidth * 0.9,
+    width: '100%',
     flexWrap: 'wrap',
 
   },
@@ -78,8 +81,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 10,
-    height: Metrics.screenHeight * 0.16,
-    width: Metrics.screenWidth * 0.4,
+    width: '47%',
     flexDirection: 'column',
     padding: 10,
 
@@ -92,15 +94,16 @@ const styles = StyleSheet.create({
       },
     shadowOpacity: 0.12,
     shadowRadius: 2.22,
-
-    elevation: 2,
   },
 
   header:{
     paddingTop: 15,
     paddingBottom: 10,
-    paddingHorizontal: 20,
     fontSize: 25,
     fontFamily:'OpenSans_600SemiBold',
+  },
+  secureSpotter: {
+    position: 'absolute',
+    bottom: '1%'
   }
 })
