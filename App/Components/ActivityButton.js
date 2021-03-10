@@ -42,10 +42,8 @@ const ActivityButton = ({name, onPress}) => {
         <TouchableOpacity style={styles.container} onPress={onPress}>
           <Icon
             name={name}
-            fill={colors[`tagIcon${name}`]}
-            stroke={colors[`tagIcon${name}`]}
-            width={metrics.screenHeight * .06}
-            height={metrics.screenHeight * .06}
+            color={colors[`tagIcon${name}`]}
+            size={metrics.screenHeight * .06}
           />
           <Text style={styles.label}>{name}</Text>
         </TouchableOpacity>

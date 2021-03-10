@@ -1,24 +1,43 @@
-import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Modal } from 'react-native';
 import DefaultTag from '../Components/DefaultTag';
-import SpotterCard from '../Components/SpotterCard';
 import DefaultButton from '../Components/DefaultButton';
 import Screen from '../Components/Screen';
 import Data from '../Themes/Data';
-import { FlatList } from 'react-native-gesture-handler';
 import SpotterScrollList from '../Components/SpotterScrollList';
+import BackButton from '../Components/BackButton';
+import MoreButton from '../Components/MoreButton';
+import ReportModal from '../Components/ReportModal';
 
-export default function MatchProfileScreen({route}) {
+
+export default function MatchProfileScreen({navigation, route}) {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const changeModalVisible=(bool) => {
+      setIsModalVisible(bool);
+    }
+
     return (
-        <Screen>
-          <View style={styles.container}>
-            <DefaultTag text={route.params.name}/>
-          </View>
-          <SpotterScrollList spotters={Data.spotters}/>
-          <View style={styles.container}>
-            <DefaultButton text='Secure Spotter' />
-          </View>
-        </Screen>
+      <Screen>
+        <BackButton onPress={()=> navigation.navigate('Find Match')}/>
+        
+        <MoreButton onPress={()=> setIsModalVisible(true)}/>
+        <Modal
+          transparent={true}
+          visible={isModalVisible}
+        >
+          <ReportModal 
+            changeModalVisible={changeModalVisible}
+          />
+        </Modal> 
+        <View style={styles.container}>
+          <DefaultTag text={route.params.name}/>
+        </View>
+        <SpotterScrollList spotters={Data.spotters}/>
+        <View style={styles.container}>
+          <DefaultButton text='Secure Spotter' />
+        </View>
+      </Screen>
     );
 }
 
@@ -28,5 +47,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10
   },
-
 })

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import { TabView, TabBar } from 'react-native-tab-view';
 import { Text, StyleSheet } from 'react-native';
 import colors from '../Themes/Colors';
 import SpotterGuidelinesBottom from './SpotterGuidelinesBottom';
 import SpotterProfileBottom from './SpotterProfileBottom';
-import {View} from 'react-native';
 
 const renderTabBar = (props) => (
   <TabBar

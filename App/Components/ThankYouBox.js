@@ -1,20 +1,16 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, StyleSheet, TextInput, ScrollView} from 'react-native';
 import colors from '../Themes/Colors';
-import Icon from './Icon';
 import metrics from '../Themes/Metrics';
 
-const SearchBar = () => {
+const ThankYouBox = () => {
     return (
         <View style={styles.container}>
-            <Icon name="BrowseTab" 
-              fill={colors.grayText} 
-              width={metrics.screenHeight * 0.02} 
-              height={metrics.screenHeight * 0.02}/>
             <TextInput 
                 style={styles.searchInput} 
+                multiline={true}
                 selectionColor={colors.orange}
-                placeholder ='Search anything'/>
+                placeholder ='Send a thank you message'/>
         </View>
     )
 }
@@ -22,8 +18,8 @@ const SearchBar = () => {
 const styles = StyleSheet.create({
     container: {
         width:'100%',
-        height: metrics.screenHeight * 0.048,
-        backgroundColor: colors.searchBarBackground,
+        height: metrics.screenHeight * 0.2,
+        backgroundColor: colors.white,
         borderRadius: 5,
         justifyContent: 'center',
         flexDirection: 'row',
@@ -33,7 +29,10 @@ const styles = StyleSheet.create({
     searchInput: {
         width: '100%',
         height: '100%',
+        paddingTop: '4%',
         paddingLeft: '2%',
+        paddingRight: '2%',
+        paddingBottom: '4%',
         fontSize: metrics.screenWidth * 0.035,
         fontFamily: 'OpenSans_400Regular',
         color: colors.grayText,
@@ -41,5 +40,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SearchBar;
-
+export default ThankYouBox;
