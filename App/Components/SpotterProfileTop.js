@@ -1,39 +1,27 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Images, Profiles, Metrics, Colors } from '../Themes';
-import DefaultTag from './DefaultTag';
-import DefaultButton from './DefaultButton';
+import { Profiles, Metrics, Colors } from '../Themes';
 
-export default function SpotterProfileTop(props){
+export default function SpotterProfileTop({spotterInfo}){
     return (
         <View style={styles.container}>
             <View style={styles.top}>
                 <View style={styles.shadow}>
-                    <Image style={styles.bioPic} source={Images.amy}/>
+                    <Image style={styles.bioPic} source={{uri: spotterInfo.profileImage.uri}}/>
                 </View>
-                <Text style={styles.header}> Amy Anderson </Text>
+                <Text style={styles.header}>{spotterInfo.name}</Text>
             </View>
         </View>
-
     );
-
 }
 
-
 const styles = StyleSheet.create({
-
     container: {
-        flex: 1,
         alignItems: 'center',
     },
 
     top:{
-        // flex: 2,
         alignItems: 'center',
-        width: Metrics.screenWidth,
-        paddingTop: Metrics.medPadding,
-        paddingBottom: Metrics.medPadding,
-        //backgroundColor: 'cyan',
       },
 
     header:{
@@ -64,7 +52,6 @@ const styles = StyleSheet.create({
     },
 
     bioPic:{
-      marginTop: Metrics.screenHeight * 0.07,
       height: 124,
       width: 124,
       borderRadius: 101,
@@ -74,10 +61,6 @@ const styles = StyleSheet.create({
         },
       shadowOpacity: 0.12,
       shadowRadius: 2.22,
-
-      //elevation: 2,
     },
-
-
 
 })

@@ -71,6 +71,16 @@ input, select, textarea {
 	appearance: none;
 }
 
+.team{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 500px;
+}
+.member{
+	justify-content: center;
+}
+
 /* Basic */
 
 	@-ms-viewport {
@@ -3001,7 +3011,7 @@ input, select, textarea {
 		-webkit-flex-direction: row;
 		-ms-flex-direction: row;
 		flex-direction: row;
-		min-height: 22.5em;
+		 /* min-height: 22.5em;*/
 	}
 
 		body.is-ie .spotlights > section {
@@ -3111,6 +3121,8 @@ input, select, textarea {
 
 				.spotlights > section > .content {
 					width: 100%;
+					padding-top: 1em;
+					padding-bottom: 1em;
 				}
 
 				.spotlights > section.inactive > .content > .inner,
@@ -3212,7 +3224,7 @@ input, select, textarea {
 	}
 
 		.wrapper > .inner {
-			padding: 5em 5em 3em 5em ;
+			 padding: 5em 5em 3em 5em ;
 			max-width: 100%;
 			width: 75em;
 		}
@@ -3229,6 +3241,7 @@ input, select, textarea {
 
 				.wrapper > .inner {
 					width: 100%;
+
 				}
 
 			}

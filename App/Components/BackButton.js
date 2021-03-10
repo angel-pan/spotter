@@ -22,14 +22,13 @@ const styles = StyleSheet.create({
         width: metrics.screenHeight * 0.05,
         height: metrics.screenHeight * 0.05,
         backgroundColor: colors.background,
-        borderRadius: 100,
-        paddingLeft: '19%',
-        paddingTop: '12%'
+        paddingRight: metrics.smallPadding,
+        
     },
     position: {
         position: 'absolute',
         top: '3%',
-        left: '5%'
+        left: '11%'
     }
 });
 

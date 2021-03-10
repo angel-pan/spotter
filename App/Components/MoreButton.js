@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     },
     position: {
         position: 'absolute',
-        top: '3%',
-        left: '107%'
+        top: '1.5%',
+        right: '2%'
     }
 });
 

@@ -11,17 +11,8 @@ const DefaultTag = ({text, onPress, type}) => {
             paddingHorizontal: metrics.screenWidth * 0.03,
             paddingVertical: metrics.screenHeight * 0.008,
             borderRadius: 5,
-            marginHorizontal: metrics.screenWidth * 0.007,
-            marginBottom: 10,
-            /*
-            shadowOffset: {
-                width: 0,
-                height: 1,
-            },
-            shadowOpacity: 0.12,
-            shadowRadius: 2.22,
-            elevation: 2,
-            */
+            marginHorizontal: metrics.screenWidth * 0.01,
+            marginVertical: metrics.screenHeight * 0.005,
         },
         text: {
             fontFamily: 'OpenSans_400Regular',

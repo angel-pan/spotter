@@ -1,56 +1,57 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
-import { Images, Profiles, Metrics, Colors } from '../Themes';
+import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import DefaultButton from './DefaultButton';
 
-export default function SpotterProfileBottom(props){
+export default function SpotterProfileBottom({spotterInfo}){
   return(
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView 
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{paddingBottom: '25%'}}
+      style={{paddingHorizontal: 3, width:'100%'}}>
         <Text style={styles.header}> Bio </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
-            <Text style={styles.text}> Hi! I've been lifting for about 5 years now and am a regular at
-            the gym here.
-            </Text>
+            <Text style={styles.text}> {spotterInfo.bio} </Text>
           </View>
           <View style = {styles.inline}>
             <View style={styles.square}>
               <Text style={styles.text}> Focus Area: </Text>
-              <DefaultTag text='Weights' type='Weights' key='Weights'/>
-              <DefaultTag text='Kickboxing' type='Kickboxing' key='Kickboxing' />
+              {spotterInfo.focusAreas.map((focusArea)=>
+                <DefaultTag text={focusArea} key={focusArea}/>
+              )}
             </View>
             <View style={styles.square}>
               <Text style={styles.text}> Spotted: </Text>
-              <Text style={styles.emphasize}> 12 </Text>
+              <Text style={styles.emphasize}> {spotterInfo.spotted} </Text>
             </View>
           </View>
         </View>
         <Text style={styles.header}> Endorsements </Text>
           <View style={styles.shadow}>
             <View style={styles.infoBox}>
-              <DefaultTag text='Friendly' type='endorsement' key='endorsement' />
-              <DefaultTag text='Patient' type='endorsement' key='endorsement' />
-              <DefaultTag text='Humble' type='endorsement' key='endorsement' />
-              <DefaultTag text='Expert' type='endorsement' key='endorsement' />
+              {spotterInfo.endorsements.map((endorsement)=> 
+                <DefaultTag text={endorsement} type='endorsement' key={endorsement}/>
+              )}
             </View>
           </View>
         </ScrollView>
-          <DefaultButton text={"Secure Spotter"}/>
+        <View style={styles.secureSpotter}>
+          <DefaultButton  text={"Secure Spotter"}/>
+        </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
       alignItems: 'center',
-      marginTop: -Metrics.screenHeight * 0.25,
   },
   inline:{
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   text:{
     fontSize: 15,
@@ -65,21 +66,19 @@ const styles = StyleSheet.create({
   infoBox:{
     backgroundColor: 'white',
     padding: 10,
-    paddingHorizontal: Metrics.screenWidth * 0.05,
     borderRadius: 10,
     flexDirection: 'row',
     marginBottom: 20,
-    marginHorizontal: 20,
-    width: Metrics.screenWidth * 0.9,
+    width: '100%',
     flexWrap: 'wrap',
+    justifyContent: 'center'
 
   },
   square:{
     alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 10,
-    height: Metrics.screenHeight * 0.16,
-    width: Metrics.screenWidth * 0.4,
+    width: '47%',
     flexDirection: 'column',
     padding: 10,
 
@@ -92,15 +91,16 @@ const styles = StyleSheet.create({
       },
     shadowOpacity: 0.12,
     shadowRadius: 2.22,
-
-    elevation: 2,
   },
 
   header:{
     paddingTop: 15,
     paddingBottom: 10,
-    paddingHorizontal: 20,
     fontSize: 25,
     fontFamily:'OpenSans_600SemiBold',
+  },
+  secureSpotter: {
+    position: 'absolute',
+    bottom: '1%'
   }
 })

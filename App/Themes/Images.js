@@ -1,7 +1,5 @@
 // leave off @2x/@3x
-const images = {
-    amy: require('../Images/Spotter_Amy.png'),
-    amy_bio: require('../Images/Amy_selfie.png'),
-  }
-  
-  export default images
+const images = {}
+
+
+export default images
