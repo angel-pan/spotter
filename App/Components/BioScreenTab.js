@@ -4,6 +4,7 @@ import { Text, StyleSheet } from 'react-native';
 import colors from '../Themes/Colors';
 import SpotterGuidelinesBottom from './SpotterGuidelinesBottom';
 import SpotterProfileBottom from './SpotterProfileBottom';
+import {View} from 'react-native';
 
 const renderTabBar = (props) => (
   <TabBar

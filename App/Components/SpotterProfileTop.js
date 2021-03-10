@@ -16,7 +16,6 @@ export default function SpotterProfileTop({spotterInfo}){
 }
 
 const styles = StyleSheet.create({
-
     container: {
         alignItems: 'center',
     },

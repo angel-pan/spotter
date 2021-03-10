@@ -47,7 +47,7 @@ const dummyData = {
 
         new User(
             'Caroline Baker',
-            'Hi there! I’ve had a history of running marathons and competing in bikini competitions - open to give any advice!',
+            'Hi there! I’ve had a history of running marathons and competing in bikini competitions!',
             'You can generally find me near the mirrors next to the rowing machine.',
             ['Weights', 'Cardio'], 101,
             ['Friendly', 'Patient', 'Humble', 'Stamina', 'Polite'],

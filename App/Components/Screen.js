@@ -10,8 +10,8 @@ const Screen = ({children}) => {
 const styles = StyleSheet.create({
     container: {
         marginTop: Constants.statusBarHeight, 
-        paddingVertical: '10%',
-        paddingHorizontal: '10%',
+        paddingTop: '10%',
+        paddingHorizontal: '8%',
         backgroundColor: colors.background, 
         flex: 1,
         justifyContent: 'center',

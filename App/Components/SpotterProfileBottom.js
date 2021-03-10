@@ -10,7 +10,7 @@ export default function SpotterProfileBottom({spotterInfo}){
       <ScrollView 
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{paddingBottom: '25%'}}
-      style={{paddingHorizontal: 3}}>
+      style={{paddingHorizontal: 3, width:'100%'}}>
         <Text style={styles.header}> Bio </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
@@ -47,7 +47,6 @@ export default function SpotterProfileBottom({spotterInfo}){
 
 const styles = StyleSheet.create({
   container: {
-      flex: 1,
       alignItems: 'center',
   },
   inline:{
@@ -67,12 +66,12 @@ const styles = StyleSheet.create({
   infoBox:{
     backgroundColor: 'white',
     padding: 10,
-    paddingHorizontal: Metrics.screenWidth * 0.05,
     borderRadius: 10,
     flexDirection: 'row',
     marginBottom: 20,
     width: '100%',
     flexWrap: 'wrap',
+    justifyContent: 'center'
 
   },
   square:{

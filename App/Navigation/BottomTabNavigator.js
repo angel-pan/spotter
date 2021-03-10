@@ -28,10 +28,8 @@ export default function BottomTabNavigator() {
                   <View style={{marginTop: 15}}>
                   <Icon
                     name={`${iconName}Tab`} 
-                    fill={iconColor}
-                    stroke={iconColor}
-                    width={size}
-                    height={size}
+                    color={iconColor}
+                    size={size}
                   />
                   </View>)
             }
@@ -39,7 +37,6 @@ export default function BottomTabNavigator() {
         tabBarOptions = {{
             style: {
                 height: "12%", 
-                backgroundColor: colors.background,
                 borderTopWidth: 0
 
             },
