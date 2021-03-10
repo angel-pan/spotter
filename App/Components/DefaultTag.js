@@ -13,15 +13,6 @@ const DefaultTag = ({text, onPress, type}) => {
             borderRadius: 5,
             marginHorizontal: metrics.screenWidth * 0.007,
             marginBottom: 10,
-            /*
-            shadowOffset: {
-                width: 0,
-                height: 1,
-            },
-            shadowOpacity: 0.12,
-            shadowRadius: 2.22,
-            elevation: 2,
-            */
         },
         text: {
             fontFamily: 'OpenSans_400Regular',

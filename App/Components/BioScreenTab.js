@@ -5,19 +5,11 @@ import colors from '../Themes/Colors';
 import SpotterGuidelinesBottom from './SpotterGuidelinesBottom';
 import SpotterProfileBottom from './SpotterProfileBottom';
 
-const ProfileRoute = () => (
-  <SpotterProfileBottom />
-);
-
-const GuidelinesRoute = () => (
-  <SpotterGuidelinesBottom />
-);
-
 const renderTabBar = (props) => (
   <TabBar
     {...props}
     indicatorStyle={styles.indicator}
-    style={{backgroundColor: colors.background }}
+    style={{backgroundColor: colors.background}}
     renderLabel={({ route }) => (
       <Text style={styles.text}>
         {route.title}
@@ -26,17 +18,23 @@ const renderTabBar = (props) => (
   />
 );
 
-export default function MatchBioTabView() {
+export default function MatchBioTabView(props) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'profile', title: 'Profile' },
     { key: 'guidelines', title: 'Guidelines' },
   ]);
 
-  const renderScene = SceneMap({
-    profile: ProfileRoute,
-    guidelines: GuidelinesRoute,
-  });
+  const renderScene = ({ route }) => {
+    switch (route.key) {
+      case 'profile':
+        return <SpotterProfileBottom {...props} />;
+      case 'guidelines':
+        return <SpotterGuidelinesBottom {...props} />;
+      default:
+        return <SpotterProfileBottom {...props} />;
+    }
+  };
 
   return (
     <TabView

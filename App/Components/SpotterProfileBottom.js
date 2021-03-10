@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
-import { Images, Profiles, Metrics, Colors } from '../Themes';
+import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import DefaultButton from './DefaultButton';
 
-export default function SpotterProfileBottom(props){
+export default function SpotterProfileBottom({spotterInfo}){
   return(
     <View style={styles.container}>
       <ScrollView 
@@ -14,29 +14,27 @@ export default function SpotterProfileBottom(props){
         <Text style={styles.header}> Bio </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
-            <Text style={styles.text}> Hi! I've been lifting for about 5 years now and am a regular at
-            the gym here.
-            </Text>
+            <Text style={styles.text}> {spotterInfo.bio} </Text>
           </View>
           <View style = {styles.inline}>
             <View style={styles.square}>
               <Text style={styles.text}> Focus Area: </Text>
-              <DefaultTag text='Weights' type='Weights' key='Weights'/>
-              <DefaultTag text='Kickboxing' type='Kickboxing' key='Kickboxing' />
+              {spotterInfo.focusAreas.map((focusArea)=>
+                <DefaultTag text={focusArea} />
+              )}
             </View>
             <View style={styles.square}>
               <Text style={styles.text}> Spotted: </Text>
-              <Text style={styles.emphasize}> 12 </Text>
+              <Text style={styles.emphasize}> {spotterInfo.spotted} </Text>
             </View>
           </View>
         </View>
         <Text style={styles.header}> Endorsements </Text>
           <View style={styles.shadow}>
             <View style={styles.infoBox}>
-              <DefaultTag text='Friendly' type='endorsement' />
-              <DefaultTag text='Patient' type='endorsement' />
-              <DefaultTag text='Humble' type='endorsement' />
-              <DefaultTag text='Expert' type='endorsement' />
+              {spotterInfo.endorsements.map((endorsement)=> 
+                <DefaultTag text={endorsement} type='endorsement' />
+              )}
             </View>
           </View>
         </ScrollView>

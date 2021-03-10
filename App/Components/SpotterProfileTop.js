@@ -1,18 +1,15 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Images, Profiles, Metrics, Colors } from '../Themes';
-import DefaultTag from './DefaultTag';
-import DefaultButton from './DefaultButton';
-import colors from '../Themes/Colors';
+import { Profiles, Metrics, Colors } from '../Themes';
 
-export default function SpotterProfileTop(props){
+export default function SpotterProfileTop({spotterInfo}){
     return (
         <View style={styles.container}>
             <View style={styles.top}>
                 <View style={styles.shadow}>
-                    <Image style={styles.bioPic} source={{uri: Images.amy.uri}}/>
+                    <Image style={styles.bioPic} source={{uri: spotterInfo.profileImage.uri}}/>
                 </View>
-                <Text style={styles.header}> Amy Anderson </Text>
+                <Text style={styles.header}>{spotterInfo.name}</Text>
             </View>
         </View>
     );

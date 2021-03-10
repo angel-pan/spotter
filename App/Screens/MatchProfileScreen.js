@@ -4,9 +4,9 @@ import DefaultTag from '../Components/DefaultTag';
 import SpotterCard from '../Components/SpotterCard';
 import DefaultButton from '../Components/DefaultButton'
 import { Metrics } from '../Themes';
+import Data from '../Themes/Data'
 
-
-const endorsements = ['Friendly', 'Patient', 'Knowledgeable'];
+const spotters =  Data.spotters;
 
 export default function MatchProfileScreen({route}) {
     return (
@@ -14,7 +14,7 @@ export default function MatchProfileScreen({route}) {
         <DefaultTag text={route.params.name}/>
 
         <View style={{marginVertical: Metrics.medPadding}}>
-          <SpotterCard endorsements={endorsements} /> 
+          <SpotterCard spotterInfo={spotters[2]} /> 
         </View>
 
         <DefaultButton text={"Secure Spotter"} />

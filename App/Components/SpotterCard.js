@@ -1,22 +1,21 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
-import { Images, Profiles, Metrics, Colors } from '../Themes';
+import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-export default function SpotterCard({endorsements}) {
+export default function SpotterCard({spotterInfo}) {
   const navigation = useNavigation();
 
   return (
     <View style = {styles.profileCard}>
-      <Image style = {styles.spotterImg} source={{uri:Images.amy.uri}}/>
-
+      <Image style = {styles.spotterImg} source={{uri:spotterInfo.profileImage.uri}}/>
 
       <View style = {styles.spotterInfo}>
         <View style={styles.spotterRow}>
-          <Text style = {styles.spotterNameText}>Amy Anderson</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Match Bio') }>
+          <Text style = {styles.spotterNameText}>{spotterInfo.name}</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Match Bio', {spotterInfo: spotterInfo}) }>
             <Ionicons
               name="information-circle"
               size={30}
@@ -25,15 +24,15 @@ export default function SpotterCard({endorsements}) {
           </TouchableOpacity>
         </View>
 
-        <Text style = {styles.spotterBlurbText}>Hi I'm Amy! Looking forward to teaching you what I know.</Text>
+        <Text style = {styles.spotterBlurbText}>{spotterInfo.bio}</Text>
       </View>
 
       <View style = {styles.spotterEndorsements}>
         <Text style = {styles.endorseHeader}>Endorsements: </Text>
         <Text> </Text>
         <View style = {styles.endorsementList}>
-        {endorsements.map((endorsement) =>
-          <DefaultTag text={endorsement} type='endorsement' key={endorsement} />
+        {spotterInfo.endorsements.map((endorsement) =>
+          <DefaultTag text={endorsement} type='endorsement' />
         )}
         </View>
 
