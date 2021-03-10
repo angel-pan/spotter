@@ -75,10 +75,13 @@ input, select, textarea {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 500px;
 }
 .member{
-	justify-content: center;
+	height: 600px;
+	padding: 22px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* Basic */
