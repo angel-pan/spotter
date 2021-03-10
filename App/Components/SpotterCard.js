@@ -90,7 +90,7 @@ export default function SpotterCard({spotterInfo}) {
         <Text style = {styles.endorseHeader}>Endorsements: </Text>
         <View style = {styles.endorsementList}>
         {spotterInfo.endorsements.map((endorsement) =>
-          <DefaultTag text={endorsement} type='endorsement' />
+          <DefaultTag text={endorsement} type='endorsement' key={endorsement}/>
         )}
         </View>
       </View>

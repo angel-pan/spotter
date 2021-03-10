@@ -20,7 +20,7 @@ export default function SpotterProfileBottom({spotterInfo}){
             <View style={styles.square}>
               <Text style={styles.text}> Focus Area: </Text>
               {spotterInfo.focusAreas.map((focusArea)=>
-                <DefaultTag text={focusArea} />
+                <DefaultTag text={focusArea} key={focusArea}/>
               )}
             </View>
             <View style={styles.square}>
@@ -33,7 +33,7 @@ export default function SpotterProfileBottom({spotterInfo}){
           <View style={styles.shadow}>
             <View style={styles.infoBox}>
               {spotterInfo.endorsements.map((endorsement)=> 
-                <DefaultTag text={endorsement} type='endorsement' />
+                <DefaultTag text={endorsement} type='endorsement' key={endorsement}/>
               )}
             </View>
           </View>

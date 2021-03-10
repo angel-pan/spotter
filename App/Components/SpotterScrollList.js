@@ -29,7 +29,7 @@ export default function SpotterScrollList({spotters}) {
           let color = spotters[index].name === spotter.name ? 
             colors.backArrowGray : colors.gray;
           return (
-          <View style={{marginHorizontal: 10}}>
+          <View style={{marginHorizontal: 10}} key={spotter.name}>
             <Icon 
               name='SelectionDot'
               size={10}
