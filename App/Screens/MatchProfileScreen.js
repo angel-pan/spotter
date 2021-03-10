@@ -36,6 +36,7 @@ export default function MatchProfileScreen({navigation, route}) {
         <SpotterScrollList spotters={Data.spotters}/>
         <View style={styles.container}>
           <DefaultButton text='Secure Spotter' />
+          {/* <DefaultButton text='Secure Spotter' onPress={() => navigation.navigate('Finish Endorse', {...route.params})}/> */}
         </View>
       </Screen>
     );

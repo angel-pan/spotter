@@ -3,8 +3,11 @@ import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity, ScrollVi
 import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
 import DefaultButton from './DefaultButton';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterProfileBottom({spotterInfo}){
+  const navigation = useNavigation();
+
   return(
     <View style={styles.container}>
       <ScrollView 
@@ -39,7 +42,7 @@ export default function SpotterProfileBottom({spotterInfo}){
           </View>
         </ScrollView>
         <View style={styles.secureSpotter}>
-          <DefaultButton  text={"Secure Spotter"}/>
+          <DefaultButton  text={"Secure Spotter"} onPress={() => navigation.navigate('Finish Endorse', {spotterInfo})}/>
         </View>
     </View>
   );
