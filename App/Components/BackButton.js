@@ -3,11 +3,15 @@ import { TouchableOpacity, View, StyleSheet, Text } from 'react-native';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 import Icon from '../Components/Icon';
+import { useNavigation } from '@react-navigation/native';
 
-const BackButton = ({onPress}) => {
+const BackButton = () => {
+    const navigation = useNavigation();
     return (
         <View style={styles.position}>
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity 
+          style={styles.container} 
+          onPress={() => navigation.pop()}>
             <Icon name="BackButton" 
               fill={colors.backArrowGray}
               width={metrics.screenHeight * 0.03} 

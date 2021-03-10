@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { NavigationEvents } from 'react-navigation';
 import Screen from '../Components/Screen';
 import LoadingDots from '../Components/LoadingDots';
 import ActivityButton from '../Components/ActivityButton';
@@ -16,7 +15,7 @@ export default class MatchLoadingScreen extends React.Component{
   componentDidMount() {
     setTimeout(() => {
       if (!this.state.cancel) {
-        this.props.navigation.navigate("Match Profiles",
+        this.props.navigation.replace("Match Profiles",
           {name: this.props.route.params.name})
       }
     }, 2000);

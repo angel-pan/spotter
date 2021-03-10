@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import colors from '../Themes/Colors';
 import SpotterCard from './SpotterCard';
 import Icon from './Icon';
+import DefaultButton from './DefaultButton';
 
 export default function SpotterScrollList({spotters}) {
   const [index, setIndex] = React.useState(0);
@@ -17,6 +18,7 @@ export default function SpotterScrollList({spotters}) {
       return (
       <View style={styles.container}>
         <SpotterCard spotterInfo={spotters[route.key]}/>
+        <DefaultButton text='Secure Spotter' />
       </View>
       );
     };
@@ -48,7 +50,9 @@ export default function SpotterScrollList({spotters}) {
 
 const styles = StyleSheet.create({
     container: {
-      paddingHorizontal: 1
+      paddingHorizontal: 1,
+      alignItems: 'center',
+      justifyContent: 'space-between',
     },
     dots: {
       marginVertical: 20,

@@ -2,15 +2,14 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultTag from './DefaultTag';
-import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import colors from '../Themes/Colors';
 import Icon from './Icon';
 
 export default function SpotterCard({spotterInfo}) {
   const navigation = useNavigation();
   const styles = StyleSheet.create({
     profileCard:{
+      height: '85%',
       width: '100%',
       backgroundColor: 'white',
       borderRadius: Metrics.roundedBorder,
@@ -26,10 +25,8 @@ export default function SpotterCard({spotterInfo}) {
   
     spotterInfo:{
       alignItems: 'flex-start',
-      justifyContent: 'space-between',
       paddingHorizontal: Metrics.medPadding,
-      paddingTop: Metrics.smallPadding,
-      paddingBottom: Metrics.smallPadding,
+      paddingVertical: Metrics.smallPadding,
     },
   
     spotterRow:{
@@ -70,28 +67,27 @@ export default function SpotterCard({spotterInfo}) {
   return (
     <View style = {styles.profileCard}>
       <Image style = {styles.spotterImg} source={{uri:spotterInfo.profileImage.uri}}/>
-
-      <View style = {styles.spotterInfo}>
-        <View style={styles.spotterRow}>
-          <Text style = {styles.spotterNameText}>{spotterInfo.name}</Text>
-          <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('Match Bio', {spotterInfo: spotterInfo}) }>
-            <Icon
-              name='MoreInfo'
-              size={32}
-              color={Colors.mildOrange}
-            />
-          </TouchableOpacity>
+      <View style={{justifyContent: 'space-evenly', flex: 1}}>
+        <View style = {styles.spotterInfo}>
+          <View style={styles.spotterRow}>
+            <Text style = {styles.spotterNameText}>{spotterInfo.name}</Text>
+            <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('Match Bio', {spotterInfo: spotterInfo}) }>
+              <Icon
+                name='MoreInfo'
+                size={32}
+                color={Colors.mildOrange}
+              />
+            </TouchableOpacity>
+          </View>
+          <Text style = {styles.spotterBlurbText}>{spotterInfo.bio}</Text>
         </View>
-
-        <Text style = {styles.spotterBlurbText}>{spotterInfo.bio}</Text>
-      </View>
-
-      <View style = {styles.spotterEndorsements}>
-        <Text style = {styles.endorseHeader}>Endorsements: </Text>
-        <View style = {styles.endorsementList}>
-        {spotterInfo.endorsements.map((endorsement) =>
-          <DefaultTag text={endorsement} type='endorsement' key={endorsement}/>
-        )}
+        <View>
+          <Text style = {styles.endorseHeader}>Endorsements: </Text>
+          <View style = {styles.endorsementList}>
+            {spotterInfo.endorsements.map((endorsement) =>
+              <DefaultTag text={endorsement} type='endorsement' key={endorsement}/>
+            )}
+          </View>
         </View>
       </View>
     </View>
