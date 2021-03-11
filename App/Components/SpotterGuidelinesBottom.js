@@ -51,17 +51,12 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
       width: '100%',
       flexWrap: 'wrap',
     },
-    secureSpotter: {
-      position: 'absolute',
-      bottom: '1%',
-    }
   });
 
   return(
     <View style={styles.container}>
       <ScrollView
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{paddingBottom: '25%'}}
       style={{paddingHorizontal: 3}}>
         <Text style={styles.header}> Instructions </Text>
         <View style={styles.shadow}>
