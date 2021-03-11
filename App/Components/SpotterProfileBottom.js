@@ -10,7 +10,7 @@ export default function SpotterProfileBottom({spotterInfo}){
 
   return(
     <View style={styles.container}>
-      <ScrollView 
+      <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{paddingBottom: '25%'}}
       style={{paddingHorizontal: 3, width:'100%'}}>
@@ -35,14 +35,14 @@ export default function SpotterProfileBottom({spotterInfo}){
         <Text style={styles.header}> Endorsements </Text>
           <View style={styles.shadow}>
             <View style={styles.infoBox}>
-              {spotterInfo.endorsements.map((endorsement)=> 
+              {spotterInfo.endorsements.map((endorsement)=>
                 <DefaultTag text={endorsement} type='endorsement' key={endorsement}/>
               )}
             </View>
           </View>
         </ScrollView>
         <View style={styles.secureSpotter}>
-          <DefaultButton  text={"Secure Spotter"} onPress={() => navigation.navigate('Finish Endorse', {spotterInfo})}/>
+          <DefaultButton  text={"Secure Spotter"} onPress={() => navigation.navigate('Endorse', {spotterInfo})}/>
         </View>
     </View>
   );

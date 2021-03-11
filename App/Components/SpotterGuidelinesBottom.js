@@ -2,8 +2,10 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { Metrics } from '../Themes';
 import DefaultButton from './DefaultButton';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterGuidelinesBottom({spotterInfo}){
+  const navigation = useNavigation();
   const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -57,7 +59,7 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
 
   return(
     <View style={styles.container}>
-      <ScrollView 
+      <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{paddingBottom: '25%'}}
       style={{paddingHorizontal: 3}}>
@@ -71,9 +73,8 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
         <Image style={styles.picture} source={{uri: spotterInfo.dailyImage.uri}}/>
       </ScrollView>
       <View style={styles.secureSpotter}>
-        <DefaultButton text={"Secure Spotter"}/>
+        <DefaultButton text={"Secure Spotter"} onPress={() => navigation.navigate('Endorse', {spotterInfo})}/>
       </View>
     </View>
   )
 }
-
