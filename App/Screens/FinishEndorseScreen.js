@@ -21,7 +21,13 @@ export default function FinishEndorseScreen({navigation, route}) {
                     <Text style={styles.thankYouTextTop}>Thank you for the</Text>
                     <Text style={styles.thankYouTextBottom}>feedback!</Text>
                     <DefaultButton text="+ Add Note"/>
-                    <Text style={styles.backToHomeText} onPress={() => navigation.popToTop()}>Back to Home</Text>
+                    <Text 
+                      style={styles.backToHomeText} 
+                      onPress={() => {
+                          navigation.popToTop(); 
+                          navigation.navigate('Home');
+                      }}>
+                            Back to Home</Text>
                 </View>
 
             </View>
