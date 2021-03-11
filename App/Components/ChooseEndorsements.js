@@ -5,18 +5,19 @@ import DefaultTag from './DefaultTag';
 import { useNavigation } from '@react-navigation/native';
 import Icon from './Icon';
 import colors from '../Themes/Colors';
+import EndorsementTag from './EndorsementTag';
 
 export default function ChooseEndorsements({spotterInfo}){
   return(
     <View style={styles.container}>
       <Text style={styles.text}> Check what applies to {spotterInfo.name}</Text>
       <View style = {styles.endorsementList}>
-          <DefaultTag text={'Friendy'} type={'endorsement'} key={'Friendly'}/>
-          <DefaultTag text={'Patient'} type={'endorsement'} key={'Patient'}/>
-          <DefaultTag text={'Humble'} type={'endorsement'} key={'Humble'}/>
-          <DefaultTag text={'Honest'} type={'endorsement'} key={'Honest'}/>
-          <DefaultTag text={'Training'} type={'endorsement'} key={'Training'}/>
-          <DefaultTag text={'Knowledgable'} type={'endorsement'} key={'Knowledgable'}/>
+          <EndorsementTag text={'Friendy'} clicked = {true}/>
+          <EndorsementTag text={'Patient'} clicked = {false}/>
+          <EndorsementTag text={'Humble'} clicked = {false}/>
+          <EndorsementTag text={'Honest'} clicked = {false}/>
+          <EndorsementTag text={'Training'} clicked = {false}/>
+          <EndorsementTag text={'Knowledgable'} clicked = {false}/>
       </View>
     </View>
   )
