@@ -5,9 +5,11 @@ import colors from '../Themes/Colors';
 import SpotterCard from './SpotterCard';
 import Icon from './Icon';
 import DefaultButton from './DefaultButton';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterScrollList({spotters}) {
   const [index, setIndex] = React.useState(0);
+  const navigation = useNavigation();
   let spotterRoutes = [];
   for (let i = 0; i < spotters.length; i++) {
       spotterRoutes.push({'key': i, 'title': spotters[i].name});
@@ -18,7 +20,7 @@ export default function SpotterScrollList({spotters}) {
       return (
       <View style={styles.container}>
         <SpotterCard spotterInfo={spotters[route.key]}/>
-        <DefaultButton text='Secure Spotter' />
+        <DefaultButton text='Secure Spotter' onPress={()=> navigation.navigate('Match Secured', {spotterInfo: spotters[route.key]})}/>
       </View>
       );
     };
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     dots: {
-      marginVertical: 20,
+      marginBottom: '8%',
       flexDirection: 'row',
       justifyContent: 'center'
     }

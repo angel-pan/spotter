@@ -49,17 +49,12 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
       width: '100%',
       flexWrap: 'wrap',
     },
-    secureSpotter: {
-      position: 'absolute',
-      bottom: '1%',
-    }
   });
 
   return(
     <View style={styles.container}>
       <ScrollView 
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{paddingBottom: '25%'}}
       style={{paddingHorizontal: 3}}>
         <Text style={styles.header}> Instructions </Text>
         <View style={styles.shadow}>
@@ -70,9 +65,6 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
         <Text style={styles.header}> How I Look Today </Text>
         <Image style={styles.picture} source={{uri: spotterInfo.dailyImage.uri}}/>
       </ScrollView>
-      <View style={styles.secureSpotter}>
-        <DefaultButton text={"Secure Spotter"}/>
-      </View>
     </View>
   )
 }

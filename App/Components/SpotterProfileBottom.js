@@ -12,7 +12,6 @@ export default function SpotterProfileBottom({spotterInfo}){
     <View style={styles.container}>
       <ScrollView 
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{paddingBottom: '25%'}}
       style={{paddingHorizontal: 3, width:'100%'}}>
         <Text style={styles.header}> Bio </Text>
         <View style={styles.shadow}>
@@ -41,9 +40,6 @@ export default function SpotterProfileBottom({spotterInfo}){
             </View>
           </View>
         </ScrollView>
-        <View style={styles.secureSpotter}>
-          <DefaultButton  text={"Secure Spotter"} onPress={() => navigation.navigate('Finish Endorse', {spotterInfo})}/>
-        </View>
     </View>
   );
 }
@@ -102,8 +98,4 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontFamily:'OpenSans_600SemiBold',
   },
-  secureSpotter: {
-    position: 'absolute',
-    bottom: '1%'
-  }
 })
