@@ -5,22 +5,21 @@ import SpotterProfileTop from '../Components/SpotterProfileTop';
 import BackButton from '../Components/BackButton';
 import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultButton from '../Components/DefaultButton';
-import { Ionicons } from '@expo/vector-icons';
 import EndorsementInput from '../Components/EndorsementInput';
 
 export default function EndorsementsScreen({navigation, route}) {
   return (
       <Screen>
-          <BackButton onPress={() => navigation.navigate('Match Bio')}/>
+          <BackButton />
           <View style={styles.container}>
               <View style={styles.topSection}>
-                  <SpotterProfileTop {...route.params}/>
-                  <Text style={styles.sessionCompleteText}>Session Completed!</Text>
+                  <SpotterProfileTop {...route.params} text='Session Completed!'/>
               </View>
               <View style={styles.bottomHalf}>
-                <EndorsementTop />
                 <EndorsementInput />
-                <DefaultButton text="       submit       "/>
+                <DefaultButton 
+                  text="Submit" 
+                  onPress={() => navigation.navigate('Finish Endorse', route.params)}/>
               </View>
 
           </View>
@@ -52,15 +51,9 @@ const styles = StyleSheet.create({
       },
   },
 
-  sessionCompleteText: {
-      color: Colors.orange,
-      fontSize: 24,
-      fontFamily:'OpenSans_600SemiBold',
-  },
-
   bottomHalf:{
       flex: 2,
-      justifyContent: 'center',
+      justifyContent: 'space-evenly',
       alignItems:'center',
   },
 

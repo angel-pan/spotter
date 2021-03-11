@@ -5,7 +5,6 @@ import SpotterProfileTop from '../Components/SpotterProfileTop';
 import BackButton from '../Components/BackButton';
 import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultButton from '../Components/DefaultButton';
-import { Ionicons } from '@expo/vector-icons'; 
 
 
 export default function FinishEndorseScreen({navigation, route}) {

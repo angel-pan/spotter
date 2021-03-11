@@ -67,9 +67,6 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
         <Text style={styles.header}> How I Look Today </Text>
         <Image style={styles.picture} source={{uri: spotterInfo.dailyImage.uri}}/>
       </ScrollView>
-      <View style={styles.secureSpotter}>
-        <DefaultButton text={"Secure Spotter"} onPress={() => navigation.navigate('Endorse', {spotterInfo})}/>
-      </View>
     </View>
   )
 }
