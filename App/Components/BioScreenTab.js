@@ -19,7 +19,7 @@ const renderTabBar = (props) => (
 );
 
 export default function MatchBioTabView(props) {
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(props.spotterSecured ? 1 : 0);
   const [routes] = React.useState([
     { key: 'profile', title: 'Profile' },
     { key: 'guidelines', title: 'Guidelines' },

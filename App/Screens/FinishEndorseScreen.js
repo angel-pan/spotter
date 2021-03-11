@@ -14,8 +14,7 @@ export default function FinishEndorseScreen({navigation, route}) {
             <BackButton onPress={() => navigation.navigate('Match Bio')}/>
             <View style={styles.container}>
                 <View style={styles.topSection}>
-                    <SpotterProfileTop {...route.params}/>
-                    <Text style={styles.sessionCompleteText}>Session Completed!</Text>
+                    <SpotterProfileTop {...route.params} text='Session Completed!'/>
                 </View>
 
                 <View style={styles.bottomHalf}>
@@ -52,12 +51,6 @@ const styles = StyleSheet.create({
             height: 1,
             width: 1
         },
-    },
-
-    sessionCompleteText: {
-        color: Colors.orange,
-        fontSize: 24,
-        fontFamily:'OpenSans_600SemiBold',
     },
 
     bottomHalf:{
