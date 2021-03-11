@@ -16,7 +16,7 @@ export default function MatchBioScreen({navigation, route, spotterSecured}) {
         <SpotterProfileTop {...route.params} text={profileText}/>
         <BioScreenTab {...route.params} spotterSecured={spotterSecured}/>
         <View style={{alignItems: 'center'}}>
-          <DefaultButton 
+          <DefaultButton
             text={buttonText}
             onPress={()=>navigation.navigate(newRoute, route.params)}/> 
         </View>

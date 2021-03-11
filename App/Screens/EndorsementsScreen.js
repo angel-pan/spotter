@@ -6,6 +6,7 @@ import BackButton from '../Components/BackButton';
 import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultButton from '../Components/DefaultButton';
 import EndorsementInput from '../Components/EndorsementInput';
+import ChooseEndorsements from '../Components/ChooseEndorsements';
 
 export default function EndorsementsScreen({navigation, route}) {
   return (
@@ -16,9 +17,10 @@ export default function EndorsementsScreen({navigation, route}) {
                   <SpotterProfileTop {...route.params} text='Session Completed!'/>
               </View>
               <View style={styles.bottomHalf}>
+                <ChooseEndorsements {...route.params} />
                 <EndorsementInput />
-                <DefaultButton 
-                  text="Submit" 
+                <DefaultButton
+                  text="Submit"
                   onPress={() => navigation.navigate('Finish Endorse', route.params)}/>
               </View>
 

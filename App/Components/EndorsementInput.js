@@ -54,9 +54,10 @@ const styles = StyleSheet.create({
     margin: Metrics.screenWidth * 0.05,
     padding: Metrics.medPadding,
     paddingTop: 20,
-    height: Metrics.screenHeight * 0.22,
+    height: Metrics.screenHeight * 0.15,
     borderRadius: 10,
     backgroundColor: 'white',
     width: Metrics.screenWidth * 0.9,
+    fontSize: 20,
   },
 })
