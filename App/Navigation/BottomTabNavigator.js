@@ -37,7 +37,8 @@ export default function BottomTabNavigator() {
         tabBarOptions = {{
             style: {
                 height: "12%", 
-                borderTopWidth: 0
+                borderTopWidth: 0,
+                backgroundColor: colors.background,
 
             },
             activeTintColor: colors.orange,
