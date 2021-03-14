@@ -32,11 +32,12 @@ const styles = StyleSheet.create({
           elevation: 2,
         marginBottom: 15,
         marginTop: 15,
+        alignItems: 'center',
     },
     text: {
         color: colors.white,
         fontFamily: 'OpenSans_600SemiBold',
-        fontSize: metrics.screenHeight * 0.02
+        fontSize: metrics.screenHeight * 0.02,
     }
 });
 
