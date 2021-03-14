@@ -9,6 +9,7 @@ import MatchStackNavigator from './MatchStackNavigator';
 import BrowseScreen from '../Screens/BrowseScreen';
 import NotesScreen from '../Screens/NotesScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
+import AddNote from '../Screens/AddNote';
 import { View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -22,12 +23,12 @@ export default function BottomTabNavigator() {
             tabBarIcon: ({focused}) => {
                 let iconColor = focused ? colors.orange : colors.gray
                 let iconName = route.name === 'Find Match' ? 'Match' : route.name;
-                let size = route.name === 'Find Match' ? 40 : 30; 
+                let size = route.name === 'Find Match' ? 40 : 30;
                 size = metrics.screenWidth * size * 0.0025
                 return (
                   <View style={{marginTop: 15}}>
                   <Icon
-                    name={`${iconName}Tab`} 
+                    name={`${iconName}Tab`}
                     color={iconColor}
                     size={size}
                   />
@@ -36,7 +37,7 @@ export default function BottomTabNavigator() {
         })}
         tabBarOptions = {{
             style: {
-                height: "12%", 
+                height: "12%",
                 borderTopWidth: 0,
                 backgroundColor: colors.background,
 
@@ -53,9 +54,9 @@ export default function BottomTabNavigator() {
             <Tab.Screen name='Home' component={HomeScreen} />
             <Tab.Screen name='Find Match' component={MatchStackNavigator} />
             <Tab.Screen name='Browse' component={BrowseScreen} />
-            <Tab.Screen name='Notes' component={NotesScreen} />
+            <Tab.Screen name='Notes' component={AddNote} />
             <Tab.Screen name='Profile' component={ProfileScreen} />
         </Tab.Navigator>
     </NavigationContainer>);
-    
+
 }
