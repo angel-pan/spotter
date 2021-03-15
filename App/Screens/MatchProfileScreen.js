@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import DefaultTag from '../Components/DefaultTag';
 import Screen from '../Components/Screen';
 import SpotterScrollList from '../Components/SpotterScrollList';
@@ -15,10 +15,12 @@ export default class MatchProfileScreen extends React.Component {
     this.routeParams = props.route.params;
   }
   componentDidMount() {
-  this.unsubscribe = firestore.collection('spotters').onSnapshot((query) => {
-    this.setState({
-      spotters: (query.docs.map((doc) => new User(doc)))});
-  });
+    this.unsubscribe = firestore.collection('spotters')
+      .where('focus-areas', 'array-contains', this.routeParams.name)
+      .onSnapshot((query) => {
+        this.setState({
+        spotters: (query.docs.map((doc) => new User(doc)))});
+    });
   }
   componentWillUnmount() {
     this.unsubscribe && this.unsubscribe();
@@ -31,7 +33,7 @@ export default class MatchProfileScreen extends React.Component {
         <View style={styles.container}>
           <DefaultTag text={this.routeParams.name}/>
         </View>
-        {this.state.spotters.length > 0 && <SpotterScrollList spotters={this.state.spotters}/>}
+        {this.state.spotters.length > 0 ? <SpotterScrollList spotters={this.state.spotters}/> : <Text>There are currently no Spotters available.</Text>}
       </Screen>
     );
   }
