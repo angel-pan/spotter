@@ -1,48 +1,58 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Metrics, Colors } from '../Themes';
-import FinishEndorseScreen from '../Screens/FinishEndorseScreen'
 import Screen from '../Components/Screen';
-import BackButton from '../Components/BackButton';
 import SearchBar from '../Components/SearchBar';
 import BrowseCard from '../Components/BrowseCard';
-import NotePreviewItem from '../Components/NotePreviewItem';
+import firestore from '../../firebase';
+import { User } from '../Themes/Data';
+import { FlatList } from 'react-native-gesture-handler';
 
-export default function BrowseScreen() {
+export default class BrowseScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {spotters: []}
+  }
+  componentDidMount() {
+    this.unsubscribe = firestore.collection('spotters')
+      .onSnapshot((query) => {
+        this.setState({
+        spotters: (query.docs.map((doc) => new User(doc)))});
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribe && this.unsubscribe();
+  }
+  render() {
     return (
       <Screen>
-        <View style={{justifyContent:'flex-start'}}>
           <Text style={styles.text}>Browsing Spotters</Text>
           <SearchBar />
-          <View style={styles.spotterList}>
-            <BrowseCard/>
-            <NotePreviewItem/>
-          </View>    
-        </View>
-
+          <FlatList 
+            keyExtractor={(item) => item.name}
+            data={this.state.spotters}
+            renderItem={({ item, index }) => 
+              <View style={styles.browseCard} id={index}>
+                <BrowseCard spotterInfo={item} key={item.name}/>
+              </View>
+            } 
+            showsVerticalScrollIndicator={false}/>
       </Screen>
     );
+  }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    justifyContent: 'flex-start',
-    alignItems:'center',
-  },
-
   text: {
     fontFamily: 'OpenSans_700Bold',
     fontSize: Metrics.screenHeight * 0.035,
-    textAlign: 'center',
+    textAlign: 'left',
     letterSpacing: 0.4,
     marginBottom: "8%",
     color: Colors.black
   },
-
-  spotterList:{
-    alignItems: 'center', 
-    paddingTop: Metrics.largePadding
-  },
+  browseCard: {
+    marginTop: 8,
+  }
 
 });
