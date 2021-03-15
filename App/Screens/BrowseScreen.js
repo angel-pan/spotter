@@ -6,6 +6,7 @@ import Screen from '../Components/Screen';
 import BackButton from '../Components/BackButton';
 import SearchBar from '../Components/SearchBar';
 import BrowseCard from '../Components/BrowseCard';
+import NotePreviewItem from '../Components/NotePreviewItem';
 
 export default function BrowseScreen() {
     return (
@@ -15,6 +16,7 @@ export default function BrowseScreen() {
           <SearchBar />
           <View style={styles.spotterList}>
             <BrowseCard/>
+            <NotePreviewItem/>
           </View>    
         </View>
 
