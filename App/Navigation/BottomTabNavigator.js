@@ -6,7 +6,7 @@ import metrics  from '../Themes/Metrics';
 import Icon from '../Components/Icon';
 import HomeScreen from '../Screens/HomeScreen';
 import MatchStackNavigator from './MatchStackNavigator';
-import BrowseScreen from '../Screens/BrowseScreen';
+import BrowseStackNavigator from './BrowseStackNavigator';
 import NotesScreen from '../Screens/NotesScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 import AddNote from '../Screens/AddNote';
@@ -53,7 +53,7 @@ export default function BottomTabNavigator() {
         }}>
             <Tab.Screen name='Home' component={HomeScreen} />
             <Tab.Screen name='Find Match' component={MatchStackNavigator} />
-            <Tab.Screen name='Browse' component={BrowseScreen} />
+            <Tab.Screen name='Browse' component={BrowseStackNavigator}/>
             <Tab.Screen name='Notes' component={AddNote} />
             <Tab.Screen name='Profile' component={ProfileScreen} />
         </Tab.Navigator>
