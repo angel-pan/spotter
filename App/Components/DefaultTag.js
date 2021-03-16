@@ -1,13 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 
-const DefaultTag = ({text, onPress, type, scale = 1}) => {
-    const colorSelect = type === 'endorsement' ? 'Yoga' : text;
+
+const DefaultTag = ({text, type, scale = 1, tagStyle}) => {
+    const getBackgroundColor = (colorSelect) => colors[`tagBackground${colorSelect}`];
+    const getTextColor = (colorSelect) => colors[`tagText${colorSelect}`];
+    const backgroundColor = tagStyle ? tagStyle.background : 
+      type === 'endorsement' ? getBackgroundColor('Yoga') : getBackgroundColor(text);
+    const textColor = tagStyle ? tagStyle.text : 
+      type === 'endorsement' ? getTextColor('Yoga') : getTextColor(text);
+    
     const styles = StyleSheet.create({
         container: {
-            backgroundColor: colors[`tagBackground${colorSelect}`],
+            backgroundColor: backgroundColor,
             paddingHorizontal: metrics.screenWidth * 0.03 * scale,
             paddingVertical: metrics.screenHeight * 0.008 * scale,
             borderRadius: 5,
@@ -17,17 +24,14 @@ const DefaultTag = ({text, onPress, type, scale = 1}) => {
         text: {
             fontFamily: 'OpenSans_400Regular',
             fontSize: metrics.screenWidth * 0.04 * scale,
-            color: colors[`tagText${colorSelect}`],
+            color: textColor,
             textAlign: 'center',
             letterSpacing: 0.4
         }
     })
     return (
-        <View
-          style={styles.container}
-          onPress={onPress}
-        >
-            <Text style={styles.text}>{text}</Text>
+        <View style={styles.container}>
+          <Text style={styles.text}>{text}</Text>
         </View>
     );
 }

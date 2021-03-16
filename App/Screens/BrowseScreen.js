@@ -5,19 +5,49 @@ import Screen from '../Components/Screen';
 import SearchBar from '../Components/SearchBar';
 import BrowseCard from '../Components/BrowseCard';
 import firestore from '../../firebase';
-import { User } from '../Themes/Data';
+import { User, focusAreas } from '../Themes/Data';
 import { FlatList } from 'react-native-gesture-handler';
+import SelectableTagList from '../Components/SelectableTagList';
+import colors from '../Themes/Colors';
+import react from 'react';
 
 export default class BrowseScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {spotters: []}
+    this.state = {
+      allSpotters: [],
+      spotters: [], 
+      tags: focusAreas, 
+      selectedTags: [...focusAreas.map(() => false)], 
+      filterTags: []}
+    this.onTagSelect = (i) => {
+      let newSelectedTags = this.state.selectedTags;
+      let newFilterTags = this.state.filterTags;
+      if (newSelectedTags[i]) {
+        newFilterTags.splice(newFilterTags.indexOf(this.state.tags[i]), 1);
+        newSelectedTags[i] = false;
+      } else {
+        newFilterTags.push(this.state.tags[i]);
+        newSelectedTags[i] = true;
+      }
+      let newSpotters = this.state.allSpotters.filter((spotter) => {
+        let filtered = false
+        newFilterTags.forEach((tag) => {
+          if (!(spotter.focusAreas.includes(tag))) filtered = true;
+        });
+        return !filtered;
+      });
+      this.setState({
+        selectedTags: newSelectedTags, 
+        filterTags: newFilterTags, 
+        spotters: newSpotters});
+    }
   }
   componentDidMount() {
     this.unsubscribe = firestore.collection('spotters')
       .onSnapshot((query) => {
-        this.setState({
-        spotters: (query.docs.map((doc) => new User(doc)))});
+        let spotters = query.docs.map((doc) => new User(doc));
+        this.setState({allSpotters: spotters, spotters: spotters});
     });
   }
   componentWillUnmount() {
@@ -28,7 +58,17 @@ export default class BrowseScreen extends React.Component {
       <Screen>
           <Text style={styles.text}>Browsing Spotters</Text>
           <SearchBar />
-          <FlatList 
+          <SelectableTagList 
+            style={{height: '6%', marginVertical: 8}}
+            tags={this.state.tags} 
+            selected={this.state.selectedTags}
+            onSelect={this.onTagSelect}
+            selectedStyle={{background: colors.orange, text: colors.white}} 
+            unselectedStyle={{background: colors.gray, text: colors.grayText}}
+            scrollable={true}
+            scrollViewProps={{horizontal: true, showsHorizontalScrollIndicator: false}}
+            tagProps={{scale: 0.9}}/>
+          <FlatList
             keyExtractor={(item) => item.name}
             data={this.state.spotters}
             renderItem={({ item, index }) => 
@@ -52,7 +92,7 @@ const styles = StyleSheet.create({
     color: Colors.black
   },
   browseCard: {
-    marginTop: 8,
+    marginBottom: 8,
   }
 
 });

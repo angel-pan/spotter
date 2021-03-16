@@ -5,8 +5,7 @@ import ActivityButton from '../Components/ActivityButton';
 import Screen from '../Components/Screen';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
-
-const categories = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
+import { focusAreas } from '../Themes/Data';
 
 export default function MatchScreen({navigation}) {
     return (
@@ -14,7 +13,7 @@ export default function MatchScreen({navigation}) {
         <Text style={styles.text}>What do you need help in today?</Text>
         <SearchBar />
         <View style={styles.activityList}>
-          {categories.map((item) => <ActivityButton name={item} key={item} onPress={() => {
+          {focusAreas.map((item) => <ActivityButton name={item} key={item} onPress={() => {
             navigation.navigate('Loading Match', {name: item})
           }}/>)}
         </View>

@@ -22,3 +22,5 @@ class ImageObj{
       })
     }
 }
+
+export const focusAreas = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];

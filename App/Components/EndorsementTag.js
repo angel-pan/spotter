@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
+import {TouchableNoHighlight, TouchableWithoutFeedback} from 'react-native-gesture-handler';
 
 const DefaultTag = ({text}) => {
     const [count, setCount] = useState(0);
