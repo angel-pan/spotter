@@ -63,8 +63,8 @@ export default class BrowseScreen extends React.Component {
             keyExtractor={(item) => item.name}
             data={this.state.spotters}
             renderItem={({ item, index }) => 
-              <View style={{marginBottom: 8}} id={index}>
-                <BrowseCard spotterInfo={item} key={index}/>
+              <View style={{marginBottom: 8}} key={index}>
+                <BrowseCard spotterInfo={item}/>
               </View>
             } 
             showsVerticalScrollIndicator={false}/>

@@ -1,4 +1,5 @@
 import { Image } from 'react-native';
+import firestore from '../../firebase';
 
 export class User {
     constructor(snapshot) {
@@ -43,6 +44,7 @@ class SessionInfo {
   constructor(data) {
     this.spotterInfo = new UserInfo(data['spotterInfo']),
     this.timestamp = timestampToString(data['timestamp']);
+    this.firebaseTimestamp = data['timestamp'];
   }
 }
 
@@ -51,7 +53,8 @@ export class Note {
     this.title = snapshot.data()['title'],
     this.sessionInfo = new SessionInfo(snapshot.data()['sessionInfo']),
     this.body = snapshot.data()['body'],
-    this.tags = snapshot.data()['tags']
+    this.tags = snapshot.data()['tags'],
+    this.id = snapshot.id
   }
 }
 
@@ -59,7 +62,19 @@ export class Session {
   constructor(snapshot) {
     this.spotterInfo = new UserInfo(snapshot.data()['spotterInfo']),
     this.timestamp = timestampToString(snapshot.data()['timestamp']);
+    this.firebaseTimestamp = snapshot.data()['timestamp'];
   }
+}
+
+export function addNote(title, body, session, tags, id) {
+  let noteRef = firestore.collection('users').doc('testuser').collection('notes');
+  let docRef = id ? noteRef.doc(id) : noteRef.doc();
+    docRef.set({title: title, body: body, tags: tags, sessionInfo: {
+      spotterInfo: {
+        name: session.spotterInfo.name, 'profile-image': session.spotterInfo.image.uri
+      }, 
+      timestamp: session.firebaseTimestamp
+    }});
 }
 
 export const focusAreas = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];

@@ -18,9 +18,9 @@ export default function NotePreviewItem({note}) {
         </View>
 
         <View style={styles.tagRow}>
-            <Text style={styles.tagText}>Tags: </Text>
-            {note.tags.map((focusArea) => 
-            <DefaultTag text={focusArea} key={focusArea} scale={0.8}/>)}
+          {note.tags.length > 0 && <Text style={styles.tagText}>Tags: </Text>}
+          {note.tags.map((focusArea) => 
+          <DefaultTag text={focusArea} key={focusArea} scale={0.8}/>)}
         </View>
 
         <View >
@@ -48,14 +48,13 @@ const styles = StyleSheet.create({
     topRow: {
         flexDirection:'row',
         paddingLeft: Metrics.medPadding,
-        paddingBottom: Metrics.medPadding,
     },
 
     tagRow: {
         width: '90%',
         flexDirection:'row',
         alignSelf: 'center',
-        paddingBottom: Metrics.smallPadding,
+        paddingVertical: Metrics.smallPadding,
         borderBottomWidth: 0.5,
         borderBottomColor: Colors.gray
     },

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Profiles, Metrics, Colors } from '../Themes';
-import DefaultTag from './DefaultTag';
-import { useNavigation } from '@react-navigation/native';
-import Icon from './Icon';
 
 export default function SessionCard({session}) {
   return(

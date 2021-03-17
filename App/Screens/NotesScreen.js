@@ -8,6 +8,7 @@ import { Metrics, Colors } from '../Themes';
 import {Note, focusAreas} from '../Themes/Data';
 import DefaultButton from '../Components/DefaultButton';
 import firestore from '../../firebase';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 
 export default class NotesScreen extends React.Component {
@@ -71,9 +72,12 @@ export default class NotesScreen extends React.Component {
             keyExtractor={(item) => item.name}
             data={this.state.notes}
             renderItem={({ item, index }) => 
-              <View style={{marginBottom: 8}} id={index}>
-                <NotesPreviewItem note={item} key={index}/>
-              </View>
+              <TouchableOpacity 
+                style={{marginBottom: 8}} 
+                key={index}
+                onPress={()=>this.props.navigation.navigate('Edit Note', {note: item})}>
+                  <NotesPreviewItem note={item} />
+              </TouchableOpacity>
             } 
             showsVerticalScrollIndicator={false}/>
             <View style={{alignItems: 'center'}}>

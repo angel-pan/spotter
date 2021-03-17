@@ -40,9 +40,9 @@ export default class NotesChooseSessionScreen extends React.Component {
           renderItem={({ item, index }) => 
             <TouchableOpacity 
               style={{marginBottom: 8}} 
-              id={index}
-              onPress={() => this.props.navigation.navigate('Edit Note')}>
-                <SessionCard session={item} key={index}/>
+              key={index}
+              onPress={() => this.props.navigation.navigate('Edit Note', {session: item})}>
+                <SessionCard session={item} />
             </TouchableOpacity>} 
           showsVerticalScrollIndicator={false}/>
       </Screen>
