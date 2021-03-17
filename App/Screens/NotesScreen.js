@@ -77,7 +77,9 @@ export default class NotesScreen extends React.Component {
             } 
             showsVerticalScrollIndicator={false}/>
             <View style={{alignItems: 'center'}}>
-            <DefaultButton text='+ Add Note' onPress={() => navigation.navigate('Choose Session')}/>
+              <DefaultButton 
+                text='+ Add Note' 
+                onPress={() => this.props.navigation.navigate('Choose Session')} />
             </View>
       </Screen>
     );

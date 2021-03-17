@@ -1,10 +1,70 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, Text, FlatList } from 'react-native';
+import Screen from '../Components/Screen';
+import BackButton from '../Components/BackButton';
+import firestore from '../../firebase';
+import { Session } from '../Themes/Data';
+import SearchBar from '../Components/SearchBar';
+import {Metrics, Colors} from '../Themes';
+import SessionCard from '../Components/SessionCard';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function NotesChooseSessionScreen() {
+
+export default class NotesChooseSessionScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {sessions: []}
+  }
+  componentDidMount() {
+    this.unsubscribe = firestore.collection('users')
+      .doc('testuser')
+      .collection('sessions')
+      .onSnapshot((query) => {
+        this.setState({
+        sessions: (query.docs.map((doc) => new Session(doc)))});
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribe && this.unsubscribe();
+  }
+  render() {
     return (
-      <View style={{flex:1, justifyContent: 'center', alignItems:'center'}}>
-        <Text>Welcome to the notes choose session screen!</Text>
-      </View>
+      <Screen>
+        <BackButton />
+        <Text style={styles.text}>Spotting Notes</Text>
+        <SearchBar />
+        <Text style={styles.textSmall}>Session History</Text>
+        <FlatList
+          keyExtractor={(item) => item.name}
+          data={this.state.sessions}
+          renderItem={({ item, index }) => 
+            <TouchableOpacity 
+              style={{marginBottom: 8}} 
+              id={index}
+              onPress={() => this.props.navigation.navigate('Edit Note')}>
+                <SessionCard session={item} key={index}/>
+            </TouchableOpacity>} 
+          showsVerticalScrollIndicator={false}/>
+      </Screen>
     );
+  }
+}
+
+const styles = {
+  text: {
+    fontFamily: 'OpenSans_700Bold',
+    fontSize: Metrics.screenHeight * 0.035,
+    textAlign: 'left',
+    letterSpacing: 0.4,
+    marginVertical: "4%",
+    color: Colors.black
+  },
+  textSmall: {
+    fontFamily: 'OpenSans_700Bold',
+    fontSize: Metrics.screenHeight * 0.025,
+    textAlign: 'left',
+    letterSpacing: 0.4,
+    marginVertical: "4%",
+    color: Colors.black
+  },
 }
