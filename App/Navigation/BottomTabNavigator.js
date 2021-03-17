@@ -7,9 +7,8 @@ import Icon from '../Components/Icon';
 import HomeScreen from '../Screens/HomeScreen';
 import MatchStackNavigator from './MatchStackNavigator';
 import BrowseStackNavigator from './BrowseStackNavigator';
-import NotesScreen from '../Screens/NotesScreen';
+import NotesStackNavigator from './NotesStackNavigator';
 import ProfileScreen from '../Screens/ProfileScreen';
-import AddNote from '../Screens/AddNote';
 import { View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -45,6 +44,7 @@ export default function BottomTabNavigator() {
             activeTintColor: colors.orange,
             inactiveTintColor: colors.gray,
             labelStyle: {
+                
                 fontFamily: 'OpenSans_400Regular',
                 fontSize: metrics.screenWidth * 0.03,
                 marginBottom: 15,
@@ -54,7 +54,7 @@ export default function BottomTabNavigator() {
             <Tab.Screen name='Home' component={HomeScreen} />
             <Tab.Screen name='Find Match' component={MatchStackNavigator} />
             <Tab.Screen name='Browse' component={BrowseStackNavigator}/>
-            <Tab.Screen name='Notes' component={AddNote} />
+            <Tab.Screen name='Notes' component={NotesStackNavigator} />
             <Tab.Screen name='Profile' component={ProfileScreen} />
         </Tab.Navigator>
     </NavigationContainer>);

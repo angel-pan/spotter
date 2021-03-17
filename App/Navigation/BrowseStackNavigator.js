@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import BrowseScreen from "../Screens/BrowseScreen";
-import MatchBioScreen from "../Screens/MatchBioScreen";
+import BioScreen from "../Screens/BioScreen";
 import FinishEndorseScreen from '../Screens/FinishEndorseScreen';
 import EndorsementsScreen from '../Screens/EndorsementsScreen';
 
 const Stack = createStackNavigator();
-const MatchBio = (props) => MatchBioScreen({...props, spotterSecurd: false});
-const SpotterSecured = (props) => MatchBioScreen({...props, spotterSecured: true});
+const BrowseBio = (props) => BioScreen({...props, spotterSecurd: false});
+const SpotterSecured = (props) => BioScreen({...props, spotterSecured: true});
 
-export default function MatchStackNavigator(){
+export default function BrowseStackNavigator(){
     return (
     <Stack.Navigator
     headerMode='none'>
       <Stack.Screen name="Browse" component={BrowseScreen} />
-      <Stack.Screen name="Match Bio" component={MatchBio} />
-      <Stack.Screen name="Match Secured" component={SpotterSecured} />
+      <Stack.Screen name="Browse Bio" component={BrowseBio} />
+      <Stack.Screen name="Browse Secured" component={SpotterSecured} />
       <Stack.Screen name="Endorse" component={EndorsementsScreen} />
       <Stack.Screen name="Finish Endorse" component={FinishEndorseScreen} />
     </Stack.Navigator>)

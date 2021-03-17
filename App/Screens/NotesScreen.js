@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
+import SearchBar from '../Components/SearchBar';
+import Screen from '../Components/Screen';
+import NotesPreviewItem from '../Components/NotePreviewItem'
 
 export default function NotesScreen() {
     return (
-      <View style={{flex:1, justifyContent: 'center', alignItems:'center'}}>
-        <Text>Welcome to the notes screen!</Text>
-      </View>
+      <Screen>
+        <Text>Spotting Notes</Text>
+        <SearchBar />
+        <NotesPreviewItem />
+      </Screen>
     );
 }

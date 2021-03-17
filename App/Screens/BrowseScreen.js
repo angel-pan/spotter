@@ -7,9 +7,7 @@ import BrowseCard from '../Components/BrowseCard';
 import firestore from '../../firebase';
 import { User, focusAreas } from '../Themes/Data';
 import { FlatList } from 'react-native-gesture-handler';
-import SelectableTagList from '../Components/SelectableTagList';
-import colors from '../Themes/Colors';
-import react from 'react';
+import HorizontalTagList from '../Components/HorizontalTagList';
 
 export default class BrowseScreen extends React.Component {
   constructor(props) {
@@ -58,16 +56,10 @@ export default class BrowseScreen extends React.Component {
       <Screen>
           <Text style={styles.text}>Browsing Spotters</Text>
           <SearchBar />
-          <SelectableTagList 
-            style={{height: '6%', marginVertical: 8}}
+          <HorizontalTagList
             tags={this.state.tags} 
             selected={this.state.selectedTags}
-            onSelect={this.onTagSelect}
-            selectedStyle={{background: colors.orange, text: colors.white}} 
-            unselectedStyle={{background: colors.gray, text: colors.grayText}}
-            scrollable={true}
-            scrollViewProps={{horizontal: true, showsHorizontalScrollIndicator: false}}
-            tagProps={{scale: 0.9}}/>
+            onSelect={this.onTagSelect} />
           <FlatList
             keyExtractor={(item) => item.name}
             data={this.state.spotters}

@@ -17,7 +17,7 @@ export default function BrowseCard({spotterInfo}) {
             <View style={styles.textPortion}>
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
                     <Text style={styles.spotterNameText}>{spotterInfo.name}</Text>
-                    <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('Match Bio', {spotterInfo}) }>
+                    <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('Browse Bio', {spotterInfo}) }>
                         <Icon
                             name='MoreInfo'
                             size={32}
@@ -38,7 +38,7 @@ export default function BrowseCard({spotterInfo}) {
         <View style={styles.button}>
             <DefaultButton 
                 text="Secure Spotter"
-                onPress={() => navigation.navigate('Match Secured', {spotterInfo})}
+                onPress={() => navigation.navigate('Browse Secured', {spotterInfo})}
                 scale={0.8}
             />
         </View>

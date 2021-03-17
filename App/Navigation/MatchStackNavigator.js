@@ -3,13 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import MatchScreen from "../Screens/MatchScreen";
 import MatchLoadingScreen from "../Screens/MatchLoadingScreen";
 import MatchProfileScreen from "../Screens/MatchProfileScreen";
-import MatchBioScreen from "../Screens/MatchBioScreen";
+import BioScreen from "../Screens/BioScreen";
 import FinishEndorseScreen from '../Screens/FinishEndorseScreen';
 import EndorsementsScreen from '../Screens/EndorsementsScreen';
 
 const Stack = createStackNavigator();
-const MatchBio = (props) => MatchBioScreen({...props, spotterSecurd: false});
-const SpotterSecured = (props) => MatchBioScreen({...props, spotterSecured: true});
+const MatchBio = (props) => BioScreen({...props, spotterSecurd: false});
+const SpotterSecured = (props) => BioScreen({...props, spotterSecured: true});
 
 export default function MatchStackNavigator(){
     return (

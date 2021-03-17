@@ -20,7 +20,7 @@ export default class EndorsementInput extends React.Component{
       placeholder="Add comments for spotter here!"
       placeholderTextColor = '#828282'
       selectionColor = '#FFA21F'
-      multiline = 'true'
+      multiline = {true}
       maxLength = {300}
       value = {this.state.value}
       onChangeText={(value) => this.setState({value})}/>

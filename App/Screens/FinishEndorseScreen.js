@@ -10,7 +10,7 @@ import DefaultButton from '../Components/DefaultButton';
 export default function FinishEndorseScreen({navigation, route}) {
     return (
         <Screen>
-            <BackButton onPress={() => navigation.navigate('Match Bio')}/>
+            <BackButton />
             <View style={styles.container}>
                 <View style={styles.topSection}>
                     <SpotterProfileTop {...route.params} text='Session Completed!'/>

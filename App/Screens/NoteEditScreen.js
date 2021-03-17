@@ -7,7 +7,7 @@ import Icon from '../Components/Icon';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 
-export default function AddNote() {
+export default function NoteEditScreen() {
   return (
     <Screen>
       <BackButton />
