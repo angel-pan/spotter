@@ -1,29 +1,35 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import { Profiles, Metrics, Colors, Images } from '../Themes';
 import DefaultTag from './DefaultTag';
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function NotePreviewItem() {
+export default function NotePreviewItem({note}) {
   const navigation = useNavigation();
-  
   return (
     <View style = {styles.profileCard}>
         <View style={styles.topRow}>
-            <Image style = {styles.spotterImg} source={Images.amy}/>
+            <Image style = {styles.spotterImg} source={{uri: note.sessionInfo.spotterInfo.image.uri}}/>
             <View style={styles.textPortion}>
-                <Text style={styles.noteTitle}>Weights with Drew</Text>
-                <Text style={styles.normText}>14 Feb 2021, 02:31PM</Text>
+                <Text style={styles.noteTitle}>{note.title}</Text>
+                <Text style={styles.normText}>{note.sessionInfo.timestamp}</Text>
             </View>
         </View>
 
         <View style={styles.tagRow}>
             <Text style={styles.tagText}>Tags: </Text>
+            {note.tags.map((focusArea) => 
+            <DefaultTag text={focusArea} key={focusArea} scale={0.8}/>)}
         </View>
 
         <View >
-            <Text style={styles.noteText}>Many takeaways from today's session with Drew.</Text>
+            <Text 
+              style={styles.noteText} 
+              numberOfLines={3} 
+              ellipsizeMode='tail'>
+                  {note.body}
+            </Text>
         </View>
     </View>
   );
@@ -32,15 +38,15 @@ export default function NotePreviewItem() {
 const styles = StyleSheet.create({
     profileCard:{
         alignItems: 'flex-start',
-        height: Metrics.screenHeight*0.35,
-        width: Metrics.screenWidth*0.9,
+        width: '100%',
         backgroundColor: 'white',
         borderRadius: Metrics.roundedBorder,
+        paddingHorizontal: 10,
+        paddingVertical: 20
     },
 
     topRow: {
         flexDirection:'row',
-        paddingTop: Metrics.medPadding,
         paddingLeft: Metrics.medPadding,
         paddingBottom: Metrics.medPadding,
     },
@@ -98,6 +104,9 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         paddingHorizontal: Metrics.medPadding,
         paddingTop: Metrics.smallPadding,
+        color: Colors.black,
+        letterSpacing: 0.4,
+        lineHeight: 25
     },
 
 

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { Metrics, Colors } from '../Themes';
 import Screen from '../Components/Screen';
 import SearchBar from '../Components/SearchBar';
 import BrowseCard from '../Components/BrowseCard';
 import firestore from '../../firebase';
 import { User, focusAreas } from '../Themes/Data';
-import { FlatList } from 'react-native-gesture-handler';
 import HorizontalTagList from '../Components/HorizontalTagList';
 
 export default class BrowseScreen extends React.Component {
@@ -64,8 +63,8 @@ export default class BrowseScreen extends React.Component {
             keyExtractor={(item) => item.name}
             data={this.state.spotters}
             renderItem={({ item, index }) => 
-              <View style={styles.browseCard} id={index}>
-                <BrowseCard spotterInfo={item} key={item.name}/>
+              <View style={{marginBottom: 8}} id={index}>
+                <BrowseCard spotterInfo={item} key={index}/>
               </View>
             } 
             showsVerticalScrollIndicator={false}/>
@@ -83,8 +82,4 @@ const styles = StyleSheet.create({
     marginBottom: "8%",
     color: Colors.black
   },
-  browseCard: {
-    marginBottom: 8,
-  }
-
 });

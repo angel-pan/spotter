@@ -23,4 +23,43 @@ class ImageObj{
     }
 }
 
+class UserInfo {
+  constructor(data) {
+    this.name = data['name'],
+    this.image = new ImageObj(data['profile-image'])
+  }
+}
+
+const monthAbbv = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+function timestampToString(timestamp) {
+  let date = timestamp.toDate()
+  let [month, day, year] = date.toLocaleDateString('en-US').split('/');
+  return `${day} ${monthAbbv[parseInt(month) - 1]} ${year}, ${date.toLocaleTimeString()}`;
+}
+
+
+class SessionInfo {
+  constructor(data) {
+    this.spotterInfo = new UserInfo(data['spotterInfo']),
+    this.timestamp = timestampToString(data['timestamp']);
+  }
+}
+
+export class Note {
+  constructor(snapshot) {
+    this.title = snapshot.data()['title'],
+    this.sessionInfo = new SessionInfo(snapshot.data()['sessionInfo']),
+    this.body = snapshot.data()['body'],
+    this.tags = snapshot.data()['tags']
+  }
+}
+
+export class Session {
+  constructor(snapshot) {
+    this.spotterInfo = new UserInfo(snapshot.data()['spotterInfo']),
+    this.timestamp = timestampToString(snapshot.data()['timestamp']);
+  }
+}
+
 export const focusAreas = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
