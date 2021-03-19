@@ -83,5 +83,42 @@ class Session {
 }
 
 const focusAreas = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
-
-export {User, Session, Note, focusAreas}
+const faqs = [{
+    section: 'About Spotter',
+    content: [{
+      question: 'What is Spotter?',
+      answer: 'Spotter is an app that aims to connect beginners at the gym with experienced gym goers.',
+      },
+      {
+        question: 'Who are Spotters?',
+        answer: 'Spotters are experienced gym-goers who are interested in helping gym beginners on their fitness journey.',
+      }],
+  },
+  { 
+    section: 'Finding a Spotter',
+    content: [{
+        question: 'What does the Find a Match function do?',
+        answer: 'The Find a Match function matches you with a Spotter who you can approach for help. This way, you don’t have to look through all the Spotters on our platform to find one that is perfect for you - we will do that for you!',
+    },{question: 'What is the difference between Find a Match and Browse?',
+  answer: 'Find a Match provides you with a curated selection of Spotters, while Browse provides you with all available Spotters at your gym.',
+   },{ question: 'How do I identify my Spotter at the gym?',
+        answer: 'You can identify them with their profile photo, or their “How I Look Like Today” photo for a more recent reference.'
+      }
+      ],
+  }, 
+  {
+    section: 'Completing a Spotting Session',
+    content: [
+      {
+        question: 'How do I endorse a Spotter?',
+        answer: 'Once you’ve completed your session, you can click on the tags that apply to your Spotter. You can also write them a personal thank you note! We are also working on allowing users to add their own endorsement tags.',
+       },{ question: 'What do I do if I find a Spotter violating community guidelines?',
+      answer: 'You should approach a gym employee if you find a Spotter violating community guidelines. We are still working on a reporting function for users to report Spotters that should be removed from the platform.',
+       }],
+    answers: [
+      
+      
+    ],
+  }
+]
+export {User, Session, Note, focusAreas, faqs}
