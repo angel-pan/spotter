@@ -2,8 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Screen from '../Components/Screen';
 import SpotterProfileTop from '../Components/SpotterProfileTop';
-import BackButton from '../Components/BackButton';
-import { Profiles, Metrics, Colors } from '../Themes';
+import { Metrics, Colors } from '../Themes';
 import DefaultButton from '../Components/DefaultButton';
 import { Session } from '../Themes/Data';
 

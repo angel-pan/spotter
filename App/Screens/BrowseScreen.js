@@ -7,6 +7,7 @@ import BrowseCard from '../Components/BrowseCard';
 import firestore from '../../firebase';
 import { User, focusAreas } from '../Themes/Data';
 import HorizontalTagList from '../Components/HorizontalTagList';
+import NoSpotters from '../Components/NoSpotters';
 
 export default class BrowseScreen extends React.Component {
   constructor(props) {
@@ -59,16 +60,19 @@ export default class BrowseScreen extends React.Component {
             tags={this.state.tags} 
             selected={this.state.selectedTags}
             onSelect={this.onTagSelect} />
-          <FlatList
-            directionalLockEnabled={true}
-            keyExtractor={(item) => item.name}
-            data={this.state.spotters}
-            renderItem={({ item }) => 
-              <View style={{marginBottom: 8}}>
-                <BrowseCard spotterInfo={item}/>
-              </View>
-            } 
-            showsVerticalScrollIndicator={false}/>
+
+          { this.state.spotters.length > 0 ? 
+            <FlatList
+              directionalLockEnabled={true}
+              keyExtractor={(item) => item.name}
+              data={this.state.spotters}
+              renderItem={({ item }) => 
+                <View style={{marginBottom: 8}}>
+                  <BrowseCard spotterInfo={item}/>
+                </View>
+              } 
+              showsVerticalScrollIndicator={false}/> :
+            <NoSpotters />}
       </Screen>
     );
   }

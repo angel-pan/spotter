@@ -7,6 +7,7 @@ import BackButton from '../Components/BackButton';
 import MoreButton from '../Components/MoreButton';
 import firestore from '../../firebase';
 import { User } from '../Themes/Data';
+import NoSpotters from '../Components/NoSpotters';
 
 export default class MatchProfileScreen extends React.Component {
   constructor(props) {
@@ -30,10 +31,14 @@ export default class MatchProfileScreen extends React.Component {
       <Screen>
         <BackButton />
         <MoreButton />
+        <View style={{justifyContent: 'flex-start', flex:1}}>
         <View style={styles.container}>
           <DefaultTag text={this.routeParams.name}/>
         </View>
-        {this.state.spotters.length > 0 ? <SpotterScrollList spotters={this.state.spotters}/> : <Text>There are currently no Spotters available.</Text>}
+        {this.state.spotters.length > 0 ? 
+          <SpotterScrollList spotters={this.state.spotters}/> : 
+          <NoSpotters />}
+        </View>
       </Screen>
     );
   }
@@ -43,6 +48,6 @@ const styles = StyleSheet.create({
 
   container: {
     alignItems: 'center',
-    marginBottom: 10
+    marginBottom: 10,
   },
 })
