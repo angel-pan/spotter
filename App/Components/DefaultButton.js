@@ -4,10 +4,10 @@ import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 
 
-const DefaultButton = ({text, onPress, scale=1}) => {
+const DefaultButton = ({text, onPress, scale=1, inverted=false}) => {
     const styles = StyleSheet.create({
         button: {
-            backgroundColor: colors.orange,
+            backgroundColor: inverted ? colors.white : colors.orange,
             paddingHorizontal: metrics.screenWidth * 0.08 * scale,
             paddingVertical: metrics.screenHeight * 0.012 * scale,
             borderRadius: 100,
@@ -24,9 +24,10 @@ const DefaultButton = ({text, onPress, scale=1}) => {
             alignItems: 'center',
         },
         text: {
-            color: colors.white,
+            color: inverted ? colors.orange : colors.white,
             fontFamily: 'OpenSans_600SemiBold',
             fontSize: metrics.screenHeight * 0.02 * scale,
+            letterSpacing: 0.4
         }
     });
     

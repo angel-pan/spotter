@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotePreviewItem from '../Components/NotePreviewItem';
 import { Note } from '../Themes/Data';
 import NoRecentNotes from '../Components/NoRecentNotes';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -78,7 +79,12 @@ export default class HomeScreen extends React.Component {
           </View>
           <View style={styles.item}>
             {this.state.recentNote ? 
-              <NotePreviewItem note={this.state.recentNote} header='Recent Notes'/> :
+              <TouchableOpacity
+                onPress={() => 
+                  this.props.navigation.navigate('Notes', 
+                    {screen: 'Edit Note', params: {note: this.state.recentNote}})}>
+                  <NotePreviewItem note={this.state.recentNote} header='Recent Notes'/>
+              </TouchableOpacity> :
               <NoRecentNotes />}
           </View>
           </ScrollView>

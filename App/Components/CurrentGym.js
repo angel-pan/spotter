@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Profiles, Metrics, Colors, Images } from '../Themes';
 import { useNavigation } from '@react-navigation/native';
+import DefaultButton from './DefaultButton';
 
 export default function CurrentGym() {
   const navigation = useNavigation();
@@ -9,11 +10,12 @@ export default function CurrentGym() {
   return (
     <View style = {styles.profileCard}>
       <Image style = {styles.spotterImg} source={Images.amy}/>
-      <View style={{justifyContent: 'space-evenly'}}>
+      <View style={{justifyContent: 'space-evenly', alignItems: 'center'}}>
         <View style = {styles.checkInInfo}>
             <Text style = {styles.currentlyAtText}>Checked-in at</Text>
             <Text style = {styles.gymText}>Star Alameda Gym</Text>
         </View>
+        <DefaultButton text='Check Out' inverted={true}/>
       </View>
     </View>
   );
@@ -27,6 +29,7 @@ const styles = StyleSheet.create({
       width: '100%',
       backgroundColor: 'orange',
       borderRadius: Metrics.roundedBorder,
+      paddingBottom: '4%'
   },
   spotterImg:{
     height: 200,
@@ -40,11 +43,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: Metrics.medPadding,
-    paddingVertical: Metrics.smallPadding,
+    paddingTop: Metrics.smallPadding,
   },
 
   gymText:{
-    fontSize: 26,
+    fontSize: 28,
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
     color: Colors.white,
@@ -52,9 +55,10 @@ const styles = StyleSheet.create({
   },
 
   currentlyAtText:{
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'OpenSans_600SemiBold',
     color: Colors.white,
+    letterSpacing: 0.4
 
   },
 
