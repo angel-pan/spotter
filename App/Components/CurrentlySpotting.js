@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Profiles, Metrics, Colors, Images } from '../Themes';
-import DefaultTag from './DefaultTag';
-import { useNavigation } from '@react-navigation/native';
-import Icon from './Icon';
 import DefaultButton from './DefaultButton'
 
-export default function CurrentlySpotting() {
-  const navigation = useNavigation();
+export default function CurrentlySpotting({spotterInfo, onButtonPress}) {
+  console.log(spotterInfo)
   const styles = StyleSheet.create({
     profileCard:{
       height: '50%',
@@ -50,13 +47,14 @@ export default function CurrentlySpotting() {
   
   return (
     <View style = {styles.profileCard}>
-      <Image style = {styles.spotterImg} source={Images.amy}/>
+      <Image style = {styles.spotterImg} source={{uri: spotterInfo.profileImage.uri}}/>
       <View style={{justifyContent: 'space-evenly', flex: 1}}>
         <View style = {styles.checkInInfo}>
             <Text style = {styles.currentlyAtText}>Currently Spotting With</Text>
-            <Text style = {styles.gymText}>Amy Anderson</Text>
-            <DefaultButton text="Complete Session"/>
-
+            <Text style = {styles.gymText}>{spotterInfo.name}</Text>
+            <DefaultButton 
+              text="Complete Session" 
+              onPress={onButtonPress} />
         </View>
 
       </View>

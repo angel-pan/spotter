@@ -6,6 +6,7 @@ import SpotterCard from './SpotterCard';
 import Icon from './Icon';
 import DefaultButton from './DefaultButton';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function SpotterScrollList({spotters}) {
   const [index, setIndex] = React.useState(0);
@@ -16,11 +17,24 @@ export default function SpotterScrollList({spotters}) {
   }
   const [routes] = React.useState(spotterRoutes);
 
+  const updateCurrentSpotter = async (value) => {
+      try {
+          await AsyncStorage.setItem('currentSpotter', JSON.stringify(value));
+      } catch(e) {
+          console.log(e);
+      }
+  }
+
   const renderScene = ({ route }) => {
       return (
       <View style={styles.container}>
         <SpotterCard spotterInfo={spotters[route.key]}/>
-        <DefaultButton text='Secure Spotter' onPress={()=> navigation.navigate('Match Secured', {spotterInfo: spotters[route.key]})}/>
+        <DefaultButton 
+          text='Secure Spotter' 
+          onPress={()=> {
+            updateCurrentSpotter(spotters[route.key])
+            navigation.navigate('Match Secured', {spotterInfo: spotters[route.key]});
+          }}/>
       </View>
       );
     };

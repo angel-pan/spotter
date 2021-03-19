@@ -5,11 +5,17 @@ import DefaultTag from './DefaultTag';
 import { useNavigation } from '@react-navigation/native';
 import Icon from './Icon';
 import DefaultButton from './DefaultButton';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function BrowseCard({spotterInfo}) {
   const navigation = useNavigation();
-  
+  const updateCurrentSpotter = async (value) => {
+      try {
+          await AsyncStorage.setItem('currentSpotter', JSON.stringify(value));
+      } catch(e) {
+          console.log(e);
+      }
+  }
   return (
     <View style = {styles.profileCard}>
         <View style={styles.topRow}>
@@ -38,7 +44,10 @@ export default function BrowseCard({spotterInfo}) {
         <View style={styles.button}>
             <DefaultButton 
                 text="Secure Spotter"
-                onPress={() => navigation.navigate('Browse Secured', {spotterInfo})}
+                onPress={() => {
+                    updateCurrentSpotter(spotterInfo);
+                    navigation.navigate('Browse Secured', {spotterInfo});
+                }}
                 scale={0.8}
             />
         </View>

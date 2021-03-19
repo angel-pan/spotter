@@ -40,9 +40,6 @@ export default function SpotterProfileBottom({spotterInfo}){
             </View>
           </View>
         </ScrollView>
-        <View style={styles.secureSpotter}>
-          <DefaultButton  text={"Secure Spotter"} onPress={() => navigation.navigate('Endorse', {spotterInfo})}/>
-        </View>
     </View>
   );
 }

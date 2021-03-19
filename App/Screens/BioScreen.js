@@ -5,11 +5,27 @@ import BioScreenTab from '../Components/BioScreenTab';
 import BackButton from '../Components/BackButton';
 import DefaultButton from '../Components/DefaultButton';
 import {View} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function MatchBioScreen({navigation, route, spotterSecured}) {
-    let buttonText = spotterSecured ? 'Complete Session' : 'Secure Spotter';
-    let newRoute = spotterSecured ? 'Endorse' : 'Match Secured';
-    let profileText = spotterSecured ? 'Spotter Secured!' : null;
+    const buttonText = spotterSecured ? 'Complete Session' : 'Secure Spotter';
+    const newRoute = spotterSecured ? 'Endorse' : 'Match Secured';
+    const profileText = spotterSecured ? 'Spotter Secured!' : null;
+    const updateCurrentSpotter = spotterSecured ?
+    async (value) => {
+      try {
+          await AsyncStorage.setItem('currentSpotter', JSON.stringify(value));
+      } catch(e) {
+          console.log(e);
+      }
+    } : 
+    async () => {
+        try {
+          await AsyncStorage.removeItem('curretSpotter');
+        } catch(e) {
+          console.log(e)
+        }
+    }
     return(
       <Screen>
         <BackButton />
@@ -18,7 +34,10 @@ export default function MatchBioScreen({navigation, route, spotterSecured}) {
         <View style={{alignItems: 'center'}}>
           <DefaultButton
             text={buttonText}
-            onPress={()=>navigation.navigate(newRoute, route.params)}/> 
+            onPress={() => {
+              updateCurrentSpotter();
+              navigation.navigate(newRoute, route.params);
+              }}/> 
         </View>
       </Screen>
   );
