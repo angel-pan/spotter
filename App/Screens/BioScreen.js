@@ -7,9 +7,8 @@ import DefaultButton from '../Components/DefaultButton';
 import {View} from 'react-native';
 import { updateCurrentSpotter, completeSession } from '../Themes/Utils';
 
-export default function MatchBioScreen({navigation, route, spotterSecured}) {
+export default function MatchBioScreen({navigation, route, spotterSecured, nextScreen}) {
     const buttonText = spotterSecured ? 'Complete Session' : 'Secure Spotter';
-    const newRoute = spotterSecured ? 'Endorse' : 'Match Secured';
     const profileText = spotterSecured ? 'Spotter Secured!' : null;
     const onButtonPress = spotterSecured ? completeSession : () => updateCurrentSpotter(route.params.spotterInfo);
     return(
@@ -22,7 +21,7 @@ export default function MatchBioScreen({navigation, route, spotterSecured}) {
             text={buttonText}
             onPress={() => {
               onButtonPress();
-              navigation.navigate(newRoute, route.params);
+              navigation.navigate(nextScreen, route.params);
               }}/> 
         </View>
       </Screen>
