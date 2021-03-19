@@ -13,7 +13,7 @@ export default function NoteEditScreen({route, navigation}) {
   let note = route.params.note;
   let session = note ? note.sessionInfo : route.params.session;
   let [title, setTitle] = React.useState(note ? note.title : 
-    `Session with ${session.spotterInfo.name}`);
+    `Session with ${session.spotterInfo.name.split(' ')[0]}`);
   let [body, setBody] = React.useState(note ? note.body : '');
   let [tags, setTags] = React.useState(note ? note.tags : []);
   return (

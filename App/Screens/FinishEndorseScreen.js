@@ -14,7 +14,6 @@ export default function FinishEndorseScreen({navigation, route}) {
     console.log(session)
     return (
         <Screen>
-            <BackButton />
             <View style={styles.container}>
                 <View style={styles.topSection}>
                     <SpotterProfileTop {...route.params} text='Session Completed!'/>

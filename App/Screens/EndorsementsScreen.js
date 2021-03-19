@@ -11,7 +11,6 @@ import ChooseEndorsements from '../Components/ChooseEndorsements';
 export default function EndorsementsScreen({navigation, route, tab}) {
   return (
       <Screen>
-          <BackButton />
           <View style={styles.container}>
               <View style={styles.topSection}>
                   <SpotterProfileTop {...route.params} text='Session Completed!'/>
