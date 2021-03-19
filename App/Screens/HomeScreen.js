@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Metrics } from '../Themes';
 import CurrentGym from '../Components/CurrentGym';
 import CurrentlySpotting from '../Components/CurrentlySpotting';
@@ -10,8 +10,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotePreviewItem from '../Components/NotePreviewItem';
 import { Note } from '../Themes/Data';
 import NoRecentNotes from '../Components/NoRecentNotes';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import {CommonActions} from '@react-navigation/routers';
+import Icon from '../Components/Icon';
+import colors from '../Themes/Colors';
+import metrics from '../Themes/Metrics';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -60,6 +61,11 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <Screen>
+        <TouchableOpacity style={styles.faq} onPress={() => this.props.navigation.navigate('Faq')}>
+          <View style={{height: '10%', width: '10%'}}>
+            <Icon name='Question' size={30} color={colors.orange}/>
+          </View>
+        </TouchableOpacity>
         <View style={styles.textComponent}>
           {this.state.user !== '' && 
             <Text style={styles.greetingText}>Hi {this.state.user},</Text>}
@@ -119,6 +125,13 @@ const styles = StyleSheet.create({
   },
   item: {
     paddingBottom: 10
+  },
+  faq: {
+    position: 'absolute',
+    right: '2%',
+    top: '3%',
+    width: metrics.screenHeight * 0.05,
+    height: metrics.screenHeight * 0.05,
   }
 
 });

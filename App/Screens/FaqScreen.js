@@ -7,10 +7,12 @@ import colors from '../Themes/Colors';
 import { ScrollView } from 'react-native-gesture-handler';
 import SearchBar from '../Components/SearchBar';
 import metrics from '../Themes/Metrics';
+import BackButton from '../Components/BackButton';
 
 export default function FaqScreen() {
     return (
         <Screen>
+            <BackButton />
             <Text style={styles.title}>FAQs</Text>
             <SearchBar />
             <ScrollView 
@@ -52,6 +54,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         letterSpacing: 0.4,
         marginBottom: "8%",
-        color: colors.black
+        color: colors.black,
+        marginTop: '3%'
     },
 });

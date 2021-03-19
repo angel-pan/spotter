@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors  from '../Themes/Colors';
 import metrics  from '../Themes/Metrics';
 import Icon from '../Components/Icon';
-import HomeScreen from '../Screens/HomeScreen';
+import HomeStackNavigator from './HomeStackNavigator';
 import MatchStackNavigator from './MatchStackNavigator';
 import BrowseStackNavigator from './BrowseStackNavigator';
 import NotesStackNavigator from './NotesStackNavigator';
@@ -51,7 +51,7 @@ export default function BottomTabNavigator() {
             },
             labelPosition: 'below-icon'
         }}>
-            <Tab.Screen name='Home' component={HomeScreen} />
+            <Tab.Screen name='Home' component={HomeStackNavigator} />
             <Tab.Screen name='Find Match' component={MatchStackNavigator} />
             <Tab.Screen name='Browse' component={BrowseStackNavigator}/>
             <Tab.Screen name='Notes' component={NotesStackNavigator} />
