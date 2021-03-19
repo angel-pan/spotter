@@ -8,6 +8,8 @@ import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 import TextEditingTools from '../Components/TextEditingTools';
 import { addNote } from '../Themes/Utils';
+import CancelModal from '../Components/CancelModal';
+import { CommonActions, StackActions } from '@react-navigation/routers';
 
 export default function NoteEditScreen({route, navigation}) {
   let note = route.params.note;
@@ -16,22 +18,58 @@ export default function NoteEditScreen({route, navigation}) {
     `Session with ${session.spotterInfo.name.split(' ')[0]}`);
   let [body, setBody] = React.useState(note ? note.body : '');
   let [tags, setTags] = React.useState(note ? note.tags : []);
+
+  let [unsavedChanges, setUnsavedChanges] = React.useState(false);
+  let [isModalVisible, toggleModalVisible] = React.useState(false);
+  let [action, setAction] = React.useState(null);
+  React.useEffect(
+    () =>
+      navigation.addListener('beforeRemove', (e) => {
+        if (!unsavedChanges) return;
+        if (e.data.action.type !== 'REPLACE') {
+          e.preventDefault();
+          setAction(e.data.action);
+          toggleModalVisible(true)
+        }
+      }),
+    [navigation, unsavedChanges]
+  );
+
+  const onCancel = () => {
+    toggleModalVisible(false);
+    setUnsavedChanges(false);
+    navigation.dispatch(action);
+  }
+
+  const closeModal = () => {
+    toggleModalVisible(false);
+  }
+
+
   return (
     <Screen>
       <BackButton />
+      <CancelModal 
+        isModalVisible={isModalVisible}
+        closeModal={closeModal}
+        onCancel={onCancel}
+        prompt={`Discard changes?`}
+        cancelText='Discard'
+        continueText='Continue Editing' />
       <Check onPress={() => {
         addNote(title, body, session, tags, note ? note.id : null);
-        navigation.popToTop()
+        navigation.replace('View Notes');
+        navigation.popToTop();
       }}/>
       <View style = {styles.container}>
         <NotesInput 
           title={title} 
-          onTitleChange={setTitle}
+          onTitleChange={(title) => {setTitle(title); setUnsavedChanges(true)}}
           body={body}
-          onBodyChange={setBody}
+          onBodyChange={(body) => {setBody(body); setUnsavedChanges(true)}}
           timestamp={session.timestamp} 
           tags={tags}
-          onTagChange={setTags}/>
+          onTagChange={(tags) => {setTags(tags); setUnsavedChanges(true)}}/>
       </View>
       <TextEditingTools />
     </Screen>

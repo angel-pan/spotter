@@ -9,7 +9,8 @@ const Stack = createStackNavigator();
 export default function MatchStackNavigator(){
     return (
     <Stack.Navigator
-    headerMode='none'>
+    headerMode='none'
+    initialRouteName='View Notes'>
       <Stack.Screen name="View Notes" component={NotesScreen} />
       <Stack.Screen name="Choose Session" component={NotesChooseSessionScreen} />
       <Stack.Screen name="Edit Note" component={NoteEditScreen} />

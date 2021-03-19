@@ -15,13 +15,16 @@ const MoreButton = () => {
               width={metrics.screenHeight * 0.035} 
               height={metrics.screenHeight * 0.035}/>
           </TouchableOpacity>
+          
           <Modal
             transparent={true}
             visible={isModalVisible}
           >
-            <ReportModal 
-              closeModal={() => setIsModalVisible(false)}
-            />
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)'}}>
+                <ReportModal 
+                closeModal={() => setIsModalVisible(false)}
+                />
+            </View>
           </Modal> 
         </View>
     )

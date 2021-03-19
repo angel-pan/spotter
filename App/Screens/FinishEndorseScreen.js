@@ -10,7 +10,6 @@ import { Session } from '../Themes/Data';
 export default function FinishEndorseScreen({navigation, route}) {
     const session = new Session();
     session.fromSpotterInfo(route.params.spotterInfo)
-    console.log(session)
     return (
         <Screen>
             <View style={styles.container}>
@@ -25,7 +24,7 @@ export default function FinishEndorseScreen({navigation, route}) {
                     <Text 
                       style={styles.backToHomeText} 
                       onPress={() => {
-                          navigation.popToTop(); 
+                          navigation.popToTop();
                           navigation.navigate('Home');
                       }}>
                             Back to Home</Text>

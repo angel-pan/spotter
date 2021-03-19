@@ -45,16 +45,17 @@ const styles = StyleSheet.create({
   },
 
   gymText:{
-    fontSize: 26,
+    fontSize: 28,
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
 
   },
 
   currentlyAtText:{
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'OpenSans_600SemiBold',
     color: Colors.grayText,
+    letterSpacing: 0.4
 
   },
 
