@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
 
     thankYouTextTop: {
         color: Colors.grayText,
-        fontSize: 26,
+        fontSize: Metrics.screenHeight * 0.030,
         fontFamily:'OpenSans_400Regular',
         
     },
 
     thankYouTextBottom: {
         color: Colors.grayText,
-        fontSize: 26,
+        fontSize: Metrics.screenHeight * 0.030,
         fontFamily:'OpenSans_400Regular',
         paddingBottom: Metrics.screenHeight*0.05,
         
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 
     backToHomeText: {
         color: Colors.orange,
-        fontSize: 18,
+        fontSize: Metrics.screenHeight * 0.020,
         fontFamily:'OpenSans_400Regular',
         paddingTop: Metrics.screenHeight*0.02,
     }

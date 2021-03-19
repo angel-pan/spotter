@@ -38,7 +38,7 @@ export default function FaqScreen() {
 const styles = StyleSheet.create({
     ssectionHeading: {
         fontFamily: 'OpenSans_600SemiBold',
-        fontSize: 20.25,
+        fontSize: metrics.screenHeight * 0.025,
         color: colors.orange,
         letterSpacing: 0.4,
     },

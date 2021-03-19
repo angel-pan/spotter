@@ -37,20 +37,20 @@ export default function SpotterCard({spotterInfo}) {
     },
   
     spotterNameText:{
-      fontSize: 26,
+      fontSize: Metrics.screenHeight * 0.028,
       fontFamily:'OpenSans_700Bold',
       letterSpacing: 0.4
     },
   
     spotterBlurbText:{
-      fontSize: 16,
+      fontSize: Metrics.screenHeight * 0.018,
       fontFamily: 'OpenSans_400Regular',
       marginVertical: '2%'
   
     },
 
     endorseHeader:{
-      fontSize: 18,
+      fontSize: Metrics.screenHeight * 0.020,
       fontFamily:'OpenSans_600SemiBold',
       paddingHorizontal: Metrics.medPadding,
     },
@@ -74,7 +74,7 @@ export default function SpotterCard({spotterInfo}) {
             <TouchableOpacity style={{alignSelf: 'center'}} onPress={() => navigation.navigate('Match Bio', {spotterInfo: spotterInfo}) }>
               <Icon
                 name='MoreInfo'
-                size={32}
+                size={Metrics.screenHeight * 0.035}
                 color={Colors.mildOrange}
               />
             </TouchableOpacity>

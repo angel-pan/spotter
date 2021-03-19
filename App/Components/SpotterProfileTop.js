@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native';
 import { Profiles, Metrics, Colors } from '../Themes';
 import colors from '../Themes/Colors';
+import metrics from '../Themes/Metrics';
 
 export default function SpotterProfileTop({spotterInfo, text}){
     return (
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
       },
 
     header:{
-        fontSize: 30,
+        fontSize: metrics.screenHeight * 0.033,
         fontFamily:'OpenSans_600SemiBold',
         paddingTop: Metrics.smallPadding,
         marginBottom: Metrics.smallPadding
@@ -49,8 +50,8 @@ const styles = StyleSheet.create({
     },
 
     bioPic:{
-      height: 124,
-      width: 124,
+      height: metrics.screenHeight * 0.13,
+      width: metrics.screenHeight * 0.13,
       borderRadius: 101,
       shadowOffset: {
           width: 0,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
 
     text: {
       fontFamily: 'OpenSans_600SemiBold',
-      fontSize: 24,
+      fontSize: metrics.screenHeight * 0.033,
       color: colors.orange,
       paddingBottom: Metrics.smallPadding
     }

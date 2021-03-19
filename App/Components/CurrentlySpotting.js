@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 
   spotterImg:{
-    height: 200,
+    height: Metrics.screenHeight * 0.3,
     width:'100%',
     borderTopLeftRadius: Metrics.roundedBorder,
     borderTopRightRadius: Metrics.roundedBorder,
@@ -45,14 +45,14 @@ const styles = StyleSheet.create({
   },
 
   gymText:{
-    fontSize: 28,
+    fontSize: Metrics.screenHeight * 0.03,
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
 
   },
 
   currentlyAtText:{
-    fontSize: 22,
+    fontSize: Metrics.screenHeight * 0.025,
     fontFamily: 'OpenSans_600SemiBold',
     color: Colors.grayText,
     letterSpacing: 0.4

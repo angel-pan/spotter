@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from './Icon';
 import colors from '../Themes/Colors';
 import EndorsementTag from './EndorsementTag';
+import metrics from '../Themes/Metrics';
 
 export default function ChooseEndorsements({spotterInfo}){
   return(
@@ -25,14 +26,14 @@ export default function ChooseEndorsements({spotterInfo}){
 
 const styles = StyleSheet.create({
   container:{
-    paddingTop: 15,
+    marginTop: metrics.screenHeight * 0.025,
     alignItems: 'center',
     backgroundColor: colors.background,
   },
   text:{
     fontFamily: 'OpenSans_400Regular',
-    color: '#828282',
-    fontSize: 15,
+    color: colors.grayText,
+    fontSize: metrics.screenHeight * 0.020,
   },
   endorsementList: {
     flexDirection: 'row',

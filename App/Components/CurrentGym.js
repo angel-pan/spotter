@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, SafeAreaView, TouchableOpacity } from 'r
 import { Profiles, Metrics, Colors, Images } from '../Themes';
 import { useNavigation } from '@react-navigation/native';
 import DefaultButton from './DefaultButton';
+import metrics from '../Themes/Metrics';
 
 export default function CurrentGym() {
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
       paddingBottom: '4%'
   },
   spotterImg:{
-    height: 200,
+    height: metrics.screenHeight * .3,
     width: '100%',
     borderTopLeftRadius: Metrics.roundedBorder,
     borderTopRightRadius: Metrics.roundedBorder,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   },
 
   gymText:{
-    fontSize: 28,
+    fontSize: metrics.screenHeight * 0.03,
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
     color: Colors.white,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   },
 
   currentlyAtText:{
-    fontSize: 22,
+    fontSize: metrics.screenHeight * 0.025,
     fontFamily: 'OpenSans_600SemiBold',
     color: Colors.white,
     letterSpacing: 0.4

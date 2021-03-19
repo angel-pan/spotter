@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     width: Metrics.screenWidth * 0.9,
-    fontSize: 20,
+    fontSize: Metrics.screenHeight * 0.016,
   },
 })

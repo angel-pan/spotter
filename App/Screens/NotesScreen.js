@@ -75,7 +75,7 @@ export default class NotesScreen extends React.Component {
             data={this.state.notes}
             renderItem={({ item }) => 
               <TouchableOpacity 
-                style={{marginBottom: 8}} 
+                style={{marginBottom: '2%'}} 
                 onPress={()=>this.props.navigation.navigate('Edit Note', {note: item})}>
                   <NotesPreviewItem note={item} />
               </TouchableOpacity>

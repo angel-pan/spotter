@@ -63,7 +63,7 @@ export default class HomeScreen extends React.Component {
       <Screen>
         <TouchableOpacity style={styles.faq} onPress={() => this.props.navigation.navigate('Faq')}>
           <View style={{height: '10%', width: '10%'}}>
-            <Icon name='Question' size={30} color={colors.orange}/>
+            <Icon name='Question' size={metrics.screenHeight * 0.035} color={colors.orange}/>
           </View>
         </TouchableOpacity>
         <View style={styles.textComponent}>
@@ -101,30 +101,23 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
-  container: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginBottom: 200,
-  },
-
   textComponent:{
     paddingBottom: Metrics.smallPadding,
   },
 
   greetingText:{
-    fontSize: 20,
+    fontSize: Metrics.screenHeight*0.023,
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
   },
 
   welcomeBackText:{
-    fontSize: 26,
+    fontSize: Metrics.screenHeight*0.030,
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
   },
   item: {
-    paddingBottom: 10
+    paddingBottom: metrics.screenHeight * 0.006
   },
   faq: {
     position: 'absolute',

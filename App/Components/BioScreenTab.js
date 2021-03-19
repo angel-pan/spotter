@@ -4,6 +4,7 @@ import { Text, StyleSheet } from 'react-native';
 import colors from '../Themes/Colors';
 import SpotterGuidelinesBottom from './SpotterGuidelinesBottom';
 import SpotterProfileBottom from './SpotterProfileBottom';
+import metrics from '../Themes/Metrics';
 
 const renderTabBar = (props) => (
   <TabBar
@@ -49,7 +50,7 @@ export default function MatchBioTabView(props) {
 const styles = StyleSheet.create({
   text: {
     fontFamily: 'OpenSans_600SemiBold',
-    fontSize: 18,
+    fontSize: metrics.screenHeight * 0.022,
     color: colors.orange
   },
   indicator: {

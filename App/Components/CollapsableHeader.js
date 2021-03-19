@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import colors from '../Themes/Colors';
+import metrics from '../Themes/Metrics';
 import Icon from './Icon';
 
 export default function CollapsableHeader({header, contents}) {
@@ -13,7 +14,7 @@ export default function CollapsableHeader({header, contents}) {
           onPress={()=>setCollapsed(collapsed => !collapsed)}>
             <View style={styles.headerRow}>
               <Text style={styles.header}>{header}</Text>
-              <Icon name={iconName} size={28}/>
+              <Icon name={iconName} size={metrics.screenHeight * 0.028}/>
               </View>
             {!collapsed && <Text style={styles.contents}>{contents}</Text>}
         </TouchableOpacity>
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
     container: {
         borderBottomWidth: 0.2,
         borderColor: colors.gray,
-        paddingBottom: 20,
+        paddingBottom: metrics.screenHeight * 0.023,
         justifyContent: 'flex-start',
         width: '100%',
-        paddingHorizontal: 10,
+        paddingHorizontal: metrics.screenHeight * 0.010,
     }
 });

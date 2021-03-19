@@ -43,7 +43,7 @@ export default class NotesChooseSessionScreen extends React.Component {
             data={this.state.sessions}
             renderItem={({ item }) => 
               <TouchableOpacity 
-                style={{marginBottom: 8}} 
+                style={{marginBottom: '2%'}} 
                 onPress={() => this.props.navigation.navigate('Edit Note', {session: item})}>
                   <SessionCard session={item} />
               </TouchableOpacity>} 
