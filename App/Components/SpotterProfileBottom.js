@@ -16,7 +16,7 @@ export default function SpotterProfileBottom({spotterInfo}){
         <Text style={styles.header}> Bio </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
-            <Text style={styles.text}> {spotterInfo.bio} </Text>
+            <Text style={styles.text}>{spotterInfo.bio}</Text>
           </View>
           <View style = {styles.inline}>
             <View style={styles.square}>
@@ -27,7 +27,7 @@ export default function SpotterProfileBottom({spotterInfo}){
             </View>
             <View style={styles.square}>
               <Text style={styles.text}> Spotted: </Text>
-              <Text style={styles.emphasize}> {spotterInfo.spotted} </Text>
+              <Text style={styles.emphasize}>{spotterInfo.spotted}</Text>
             </View>
           </View>
         </View>
@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
   text:{
     fontSize: 15,
     fontFamily: 'OpenSans_400Regular',
+    letterSpacing: 0.4,
+    lineHeight: 25
 
   },
   emphasize:{
@@ -64,14 +66,13 @@ const styles = StyleSheet.create({
 
   infoBox:{
     backgroundColor: 'white',
-    padding: 10,
+    padding: 15,
     borderRadius: 10,
     flexDirection: 'row',
     marginBottom: 20,
     width: '100%',
     flexWrap: 'wrap',
-    justifyContent: 'center'
-
+    justifyContent: 'center',
   },
   square:{
     alignItems: 'center',
@@ -80,6 +81,7 @@ const styles = StyleSheet.create({
     width: '47%',
     flexDirection: 'column',
     padding: 10,
+    justifyContent: 'center'
 
   },
 

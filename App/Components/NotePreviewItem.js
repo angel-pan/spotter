@@ -2,13 +2,13 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { Profiles, Metrics, Colors, Images } from '../Themes';
 import DefaultTag from './DefaultTag';
-import { useNavigation } from '@react-navigation/native';
+import colors from '../Themes/Colors';
 
 
-export default function NotePreviewItem({note}) {
-  const navigation = useNavigation();
+export default function NotePreviewItem({note, header}) {
   return (
     <View style = {styles.profileCard}>
+        {header && <Text style={styles.header}>{header}</Text>}
         <View style={styles.topRow}>
             <Image style = {styles.spotterImg} source={{uri: note.sessionInfo.spotterInfo.image.uri}}/>
             <View style={styles.textPortion}>
@@ -45,6 +45,15 @@ const styles = StyleSheet.create({
         paddingVertical: 20
     },
 
+    header: {
+      fontSize: 23.55,
+      fontFamily:'OpenSans_600SemiBold',
+      letterSpacing: 0.4,
+      paddingBottom: Metrics.smallPadding,
+      color: colors.grayText,
+      alignSelf: 'center'
+    },
+
     topRow: {
         flexDirection:'row',
         paddingLeft: Metrics.medPadding,
@@ -78,26 +87,27 @@ const styles = StyleSheet.create({
     },
   
     noteTitle:{
-        fontSize: 22,
-        fontFamily:'OpenSans_700Bold',
+        fontSize: 17,
+        fontFamily:'OpenSans_600SemiBold',
         letterSpacing: 0.4,
         paddingBottom: Metrics.smallPadding,
+        color: colors.black
     },
   
     normText:{
-        fontSize: 14,
+        fontSize: 13,
         fontFamily: 'OpenSans_400Regular',
         color: Colors.grayText, 
     },
 
     tagText:{
-        fontSize: 16,
+        fontSize: 12,
         fontFamily: 'OpenSans_400Regular',
         marginVertical: '2%',
     },
 
     noteText:{
-        fontSize: 16,
+        fontSize: 13,
         fontFamily: 'OpenSans_400Regular',
         marginVertical: '2%',
         flexWrap: 'wrap',

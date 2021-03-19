@@ -1,7 +1,7 @@
 import { Image } from 'react-native';
-import firestore from '../../firebase';
+import { timestampToString } from './Utils';
 
-export class User {
+class User {
     constructor(snapshot) {
         this.name = snapshot.data()['name'];
         this.bio = snapshot.data()['bio'];
@@ -31,24 +31,15 @@ class UserInfo {
   }
 }
 
-const monthAbbv = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-function timestampToString(timestamp) {
-  let date = timestamp.toDate()
-  let [month, day, year] = date.toLocaleDateString('en-US').split('/');
-  return `${day} ${monthAbbv[parseInt(month) - 1]} ${year}, ${date.toLocaleTimeString()}`;
-}
-
-
 class SessionInfo {
   constructor(data) {
     this.spotterInfo = new UserInfo(data['spotterInfo']),
     this.timestamp = timestampToString(data['timestamp']);
-    this.firebaseTimestamp = data['timestamp'];
+    this.timestampJson = JSON.stringify(data['timestamp']);
   }
 }
 
-export class Note {
+class Note {
   constructor(snapshot) {
     this.title = snapshot.data()['title'],
     this.sessionInfo = new SessionInfo(snapshot.data()['sessionInfo']),
@@ -58,23 +49,14 @@ export class Note {
   }
 }
 
-export class Session {
+class Session {
   constructor(snapshot) {
     this.spotterInfo = new UserInfo(snapshot.data()['spotterInfo']),
     this.timestamp = timestampToString(snapshot.data()['timestamp']);
-    this.firebaseTimestamp = snapshot.data()['timestamp'];
+    this.timestampJson = JSON.stringify(snapshot.data()['timestamp']);
   }
 }
 
-export function addNote(title, body, session, tags, id) {
-  let noteRef = firestore.collection('users').doc('testuser').collection('notes');
-  let docRef = id ? noteRef.doc(id) : noteRef.doc();
-    docRef.set({title: title, body: body, tags: tags, sessionInfo: {
-      spotterInfo: {
-        name: session.spotterInfo.name, 'profile-image': session.spotterInfo.image.uri
-      }, 
-      timestamp: session.firebaseTimestamp
-    }});
-}
+const focusAreas = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
 
-export const focusAreas = ["Weights", "Cardio", "Yoga", "Diet", "Kickboxing", "General"];
+export {User, Session, Note, focusAreas}

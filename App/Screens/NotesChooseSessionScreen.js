@@ -19,6 +19,7 @@ export default class NotesChooseSessionScreen extends React.Component {
     this.unsubscribe = firestore.collection('users')
       .doc('testuser')
       .collection('sessions')
+      .orderBy('timestamp', 'desc')
       .onSnapshot((query) => {
         this.setState({
         sessions: (query.docs.map((doc) => new Session(doc)))});
@@ -35,12 +36,11 @@ export default class NotesChooseSessionScreen extends React.Component {
         <SearchBar />
         <Text style={styles.textSmall}>Session History</Text>
         <FlatList
-          keyExtractor={(item) => item.name}
+          keyExtractor={(item) => item.timestamp}
           data={this.state.sessions}
-          renderItem={({ item, index }) => 
+          renderItem={({ item }) => 
             <TouchableOpacity 
               style={{marginBottom: 8}} 
-              key={index}
               onPress={() => this.props.navigation.navigate('Edit Note', {session: item})}>
                 <SessionCard session={item} />
             </TouchableOpacity>} 

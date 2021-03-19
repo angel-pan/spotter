@@ -7,7 +7,7 @@ import Icon from '../Components/Icon';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 import TextEditingTools from '../Components/TextEditingTools';
-import { addNote } from '../Themes/Data';
+import { addNote } from '../Themes/Utils';
 
 export default function NoteEditScreen({route, navigation}) {
   let note = route.params.note;
@@ -20,7 +20,7 @@ export default function NoteEditScreen({route, navigation}) {
     <Screen>
       <BackButton />
       <Check onPress={() => {
-        addNote(title, body, session, tags, note? note.id : null);
+        addNote(title, body, session, tags, note.id);
         navigation.popToTop()
       }}/>
       <View style = {styles.container}>

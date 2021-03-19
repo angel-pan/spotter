@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 import { Metrics } from '../Themes';
-import DefaultButton from './DefaultButton';
-import { useNavigation } from '@react-navigation/native';
 
 export default function SpotterGuidelinesBottom({spotterInfo}){
-  const navigation = useNavigation();
   const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center'
     },
-
     picture:{
       height: 'auto',
       width: '100%',
@@ -23,6 +19,8 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
     text:{
       fontSize: 15,
       fontFamily: 'OpenSans_400Regular',
+      lineHeight: 25,
+      letterSpacing: 0.4
     },
 
     header:{
@@ -43,7 +41,7 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
     },
     infoBox:{
       backgroundColor: 'white',
-      padding: 20,
+      padding: 15,
       paddingHorizontal: Metrics.screenWidth * 0.05,
       borderRadius: 10,
       flexDirection: 'row',
@@ -61,7 +59,7 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
         <Text style={styles.header}> Instructions </Text>
         <View style={styles.shadow}>
           <View style={styles.infoBox}>
-            <Text style={styles.text}> {spotterInfo.instructions} </Text>
+            <Text style={styles.text}>{spotterInfo.instructions}</Text>
           </View>
         </View>
         <Text style={styles.header}> How I Look Today </Text>

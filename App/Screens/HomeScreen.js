@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Image, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Metrics } from '../Themes';
 import CurrentGym from '../Components/CurrentGym';
 import CurrentlySpotting from '../Components/CurrentlySpotting';
 import Screen from '../Components/Screen';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '../../firebase';
-
-
-
+import { completeSession } from '../Themes/Utils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import NotePreviewItem from '../Components/NotePreviewItem';
+import { Note } from '../Themes/Data';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {user: '', currentSpotter: null};
+    this.state = {user: '', currentSpotter: null, recentNote: null};
     this.unsubscribe = []
 
   }
@@ -26,16 +26,6 @@ export default class HomeScreen extends React.Component {
     } catch(e) {
       console.log(e)
     }
-
-  }
-
-  completeSession = async () => {
-    try {
-      await AsyncStorage.removeItem('curretSpotter');
-      this.setState({currentSpotter: null})
-    } catch(e) {
-      console.log(e)
-    }
   }
 
   componentDidMount() {
@@ -45,6 +35,15 @@ export default class HomeScreen extends React.Component {
       .onSnapshot((snapshot) => 
         this.setState({
         user: snapshot.data()['name']})));
+    this.unsubscribe.push(
+      firestore.collection('users')
+      .doc('testuser')
+      .collection('notes')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => this.setState({
+        recentNote: new Note(snapshot.docs[0])
+      }))
+    );
     this.unsubscribe.push(
       this.props.navigation.addListener('focus', () => this.loadCurrentSpotter()));
   }
@@ -63,13 +62,24 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.greetingText}>Hi {this.state.user},</Text>}
           <Text style={styles.welcomeBackText}>Welcome back!</Text>
         </View>
-
-        <View style={styles.container}>
-          <CurrentGym/>
-          {this.state.currentSpotter && 
-          <CurrentlySpotting spotterInfo={this.state.currentSpotter} onButtonPress={this.completeSession}/>}
-        </View>
-
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.item}>
+            <CurrentGym/>
+          </View>
+          <View style={styles.item}>
+            {this.state.currentSpotter && 
+            <CurrentlySpotting 
+              spotterInfo={this.state.currentSpotter} 
+              onButtonPress={() => {
+              completeSession();
+              this.setState({currentSpotter: null})
+              }}/>}
+          </View>
+          <View style={styles.item}>
+            {this.state.recentNote && 
+            <NotePreviewItem note={this.state.recentNote} header='Recent Notes'/>}
+          </View>
+          </ScrollView>
       </Screen>
     );
   }
@@ -78,9 +88,9 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
 
   container: {
-    flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
+    marginBottom: 200,
   },
 
   textComponent:{
@@ -98,5 +108,8 @@ const styles = StyleSheet.create({
     fontFamily:'OpenSans_700Bold',
     letterSpacing: 0.4,
   },
+  item: {
+    paddingBottom: 10
+  }
 
 });

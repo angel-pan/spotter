@@ -49,6 +49,7 @@ export default class NotesScreen extends React.Component {
     this.unsubscribe = firestore.collection('users')
       .doc('testuser')
       .collection('notes')
+      .orderBy('timestamp', 'desc')
       .onSnapshot((query) => {
         let notes = query.docs.map((doc) => new Note(doc));
         this.setState({allNotes: notes, notes: notes});
@@ -69,12 +70,11 @@ export default class NotesScreen extends React.Component {
             selected={this.state.selectedTags}
             onSelect={this.onTagSelect} />
           <FlatList
-            keyExtractor={(item) => item.name}
+            keyExtractor={item => item.id}
             data={this.state.notes}
-            renderItem={({ item, index }) => 
+            renderItem={({ item }) => 
               <TouchableOpacity 
                 style={{marginBottom: 8}} 
-                key={index}
                 onPress={()=>this.props.navigation.navigate('Edit Note', {note: item})}>
                   <NotesPreviewItem note={item} />
               </TouchableOpacity>

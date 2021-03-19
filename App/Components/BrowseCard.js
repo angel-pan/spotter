@@ -5,17 +5,10 @@ import DefaultTag from './DefaultTag';
 import { useNavigation } from '@react-navigation/native';
 import Icon from './Icon';
 import DefaultButton from './DefaultButton';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { updateCurrentSpotter } from '../Themes/Utils';
 
 export default function BrowseCard({spotterInfo}) {
   const navigation = useNavigation();
-  const updateCurrentSpotter = async (value) => {
-      try {
-          await AsyncStorage.setItem('currentSpotter', JSON.stringify(value));
-      } catch(e) {
-          console.log(e);
-      }
-  }
   return (
     <View style = {styles.profileCard}>
         <View style={styles.topRow}>
