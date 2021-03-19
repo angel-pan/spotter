@@ -9,7 +9,7 @@ export default function CurrentGym() {
   
   return (
     <View style = {styles.profileCard}>
-      <Image style = {styles.spotterImg} source={Images.amy}/>
+      <Image style = {styles.spotterImg} source={Images.gym}/>
       <View style={{justifyContent: 'space-evenly', alignItems: 'center'}}>
         <View style = {styles.checkInInfo}>
             <Text style = {styles.currentlyAtText}>Checked-in at</Text>

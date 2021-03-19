@@ -88,7 +88,7 @@ export default class HomeScreen extends React.Component {
             {this.state.recentNote ? 
               <TouchableOpacity
                 onPress={() => {
-                  this.props.navigation.navigate('Notes');
+                  this.props.navigation.navigate('Notes', {screen: 'View Notes'});
                 }}>
                   <NotePreviewItem note={this.state.recentNote} header='Recent Notes'/>
               </TouchableOpacity> :

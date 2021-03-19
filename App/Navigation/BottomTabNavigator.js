@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors  from '../Themes/Colors';
 import metrics  from '../Themes/Metrics';
@@ -10,12 +9,13 @@ import BrowseStackNavigator from './BrowseStackNavigator';
 import NotesStackNavigator from './NotesStackNavigator';
 import ProfileScreen from '../Screens/ProfileScreen';
 import { View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabNavigator() {
     return (
-    <NavigationContainer>
+        <NavigationContainer>
         <Tab.Navigator
         screenOptions = { ({route}) => ({
             labelPosition: 'below-icon',
@@ -57,6 +57,6 @@ export default function BottomTabNavigator() {
             <Tab.Screen name='Notes' component={NotesStackNavigator} />
             <Tab.Screen name='Profile' component={ProfileScreen} />
         </Tab.Navigator>
-    </NavigationContainer>);
-
+        </NavigationContainer>
+    );
 }

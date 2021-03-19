@@ -5,7 +5,7 @@ import FaqScreen from '../Screens/FaqScreen';
 
 const Stack = createStackNavigator();
 
-export default function MatchStackNavigator(){
+export default function HomeStackNavigator(){
     return (
     <Stack.Navigator
     headerMode='none'>
