@@ -20,7 +20,7 @@ export default function NoteEditScreen({route, navigation}) {
     <Screen>
       <BackButton />
       <Check onPress={() => {
-        addNote(title, body, session, tags, note.id);
+        addNote(title, body, session, tags, note ? note.id : null);
         navigation.popToTop()
       }}/>
       <View style = {styles.container}>

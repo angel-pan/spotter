@@ -36,6 +36,7 @@ export default class NotesChooseSessionScreen extends React.Component {
         <SearchBar />
         <Text style={styles.textSmall}>Session History</Text>
         <FlatList
+          directionalLockEnabled={true}
           keyExtractor={(item) => item.timestamp}
           data={this.state.sessions}
           renderItem={({ item }) => 

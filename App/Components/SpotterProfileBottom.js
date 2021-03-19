@@ -11,6 +11,7 @@ export default function SpotterProfileBottom({spotterInfo}){
   return(
     <View style={styles.container}>
       <ScrollView
+      directionalLockEnabled={true}
       showsVerticalScrollIndicator={false}
       style={{paddingHorizontal: 3, width:'100%'}}>
         <Text style={styles.header}> Bio </Text>

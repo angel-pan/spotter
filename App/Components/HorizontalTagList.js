@@ -9,7 +9,7 @@ const HorizontalTagList = (props) => {
             selectedStyle={{background: colors.orange, text: colors.white}} 
             unselectedStyle={{background: colors.gray, text: colors.grayText}}
             scrollable={true}
-            scrollViewProps={{horizontal: true, showsHorizontalScrollIndicator: false}}
+            scrollViewProps={{horizontal: true, showsHorizontalScrollIndicator: false, directionalLockEnabled: true}}
             tagProps={{scale: 0.9}} />
     );
 }

@@ -16,14 +16,15 @@ const deleteNote = (noteId) => {
 }
 
 const addNote = (title, body, session, tags, id = null) => {
-    let noteRef = firestore.collection('users').doc('testuser').collection('notes');
-    let docRef = id ? noteRef.doc(id) : noteRef.doc();
+    const noteRef = firestore.collection('users').doc('testuser').collection('notes');
+    const docRef = id ? noteRef.doc(id) : noteRef.doc();
+    const timestampJson = JSON.parse(session.timestampJson);
       docRef.set({title: title, body: body, tags: tags, 
         sessionInfo: {
           spotterInfo: {
             name: session.spotterInfo.name, 'profile-image': session.spotterInfo.image.uri
           }, 
-          timestamp: JSON.parse(session.timestampJson)
+          timestamp: new firebase.firestore.Timestamp(timestampJson.seconds, timestampJson.nanoseconds)
         },
         timestamp: firebase.firestore.Timestamp.now()
     });
@@ -65,7 +66,8 @@ const completeSession = async (cancel = false) => {
 // Other functions
 const monthAbbv = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const timestampToString = (timestamp) => {
-  let date = timestamp.toDate()
+  if (!timestamp) return ''
+  let date = timestamp.toDate();
   let [month, day, year] = date.toLocaleDateString('en-US').split('/');
   return `${day} ${monthAbbv[parseInt(month) - 1]} ${year}, ${date.toLocaleTimeString()}`;
 }

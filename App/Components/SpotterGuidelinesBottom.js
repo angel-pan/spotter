@@ -54,6 +54,7 @@ export default function SpotterGuidelinesBottom({spotterInfo}){
   return(
     <View style={styles.container}>
       <ScrollView
+      directionalLockEnabled={true}
       showsVerticalScrollIndicator={false}
       style={{paddingHorizontal: 3}}>
         <Text style={styles.header}> Instructions </Text>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, ScrollView} from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import colors from '../Themes/Colors';
 import metrics from '../Themes/Metrics';
 

@@ -1,8 +1,10 @@
 import { Image } from 'react-native';
 import { timestampToString } from './Utils';
+import * as firebase from 'firebase';
 
 class User {
     constructor(snapshot) {
+      if (snapshot) {
         this.name = snapshot.data()['name'];
         this.bio = snapshot.data()['bio'];
         this.instructions = snapshot.data()['instructions'];
@@ -11,49 +13,72 @@ class User {
         this.endorsements = snapshot.data()['endorsements'];
         this.profileImage = new ImageObj(snapshot.data()['profile-image']);
         this.dailyImage = new ImageObj(snapshot.data()['daily-image']);
+      }
     }
 }
 
 class ImageObj{
     constructor(uri) {
-      this.uri = uri;
-      this.aspectRatio = 1; //default value
-      Image.getSize(uri, (width, height) => {
-        this.aspectRatio = width / height
-      })
+      if (uri) {
+        this.uri = uri;
+        this.aspectRatio = 1; //default value
+        Image.getSize(uri, (width, height) => {
+          this.aspectRatio = width / height
+        })
+      }
     }
 }
 
 class UserInfo {
   constructor(data) {
-    this.name = data['name'],
-    this.image = new ImageObj(data['profile-image'])
+    if (data) {
+      this.name = data['name'],
+      this.image = new ImageObj(data['profile-image'])
+    }
+  }
+  fromUser(user) {
+    this.name = user.name;
+    this.image = user.profileImage;
   }
 }
 
 class SessionInfo {
   constructor(data) {
-    this.spotterInfo = new UserInfo(data['spotterInfo']),
-    this.timestamp = timestampToString(data['timestamp']);
-    this.timestampJson = JSON.stringify(data['timestamp']);
+    if (data) {
+      this.spotterInfo = new UserInfo(data['spotterInfo']),
+      this.timestamp = timestampToString(data['timestamp']);
+      this.timestampJson = JSON.stringify(data['timestamp']);
+    }
   }
 }
 
 class Note {
   constructor(snapshot) {
-    this.title = snapshot.data()['title'],
-    this.sessionInfo = new SessionInfo(snapshot.data()['sessionInfo']),
-    this.body = snapshot.data()['body'],
-    this.tags = snapshot.data()['tags'],
-    this.id = snapshot.id
+    if (snapshot) {
+      this.title = snapshot.data()['title'],
+      this.sessionInfo = new SessionInfo(snapshot.data()['sessionInfo']),
+      this.body = snapshot.data()['body'],
+      this.tags = snapshot.data()['tags'],
+      this.id = snapshot.id
+    }
   }
 }
 
 class Session {
   constructor(snapshot) {
-    this.spotterInfo = new UserInfo(snapshot.data()['spotterInfo']),
-    this.timestamp = timestampToString(snapshot.data()['timestamp']);
-    this.timestampJson = JSON.stringify(snapshot.data()['timestamp']);
+    if (snapshot) {
+      this.spotterInfo = new UserInfo(snapshot.data()['spotterInfo']),
+      this.timestamp = timestampToString(snapshot.data()['timestamp']);
+      this.timestampJson = JSON.stringify(snapshot.data()['timestamp']);
+    }
+  }
+  fromSpotterInfo(spotterInfo) {
+    const now = firebase.firestore.Timestamp.now();
+    const userInfo = new UserInfo();
+    userInfo.fromUser(spotterInfo);
+    this.spotterInfo = userInfo;
+    this.timestamp = timestampToString(now);
+    this.timestampJson = JSON.stringify(now);
   }
 }
 

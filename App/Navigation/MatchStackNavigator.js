@@ -10,6 +10,7 @@ import EndorsementsScreen from '../Screens/EndorsementsScreen';
 const Stack = createStackNavigator();
 const MatchBio = (props) => BioScreen({...props, spotterSecured: false, nextScreen: 'Match Secured'});
 const SpotterSecured = (props) => BioScreen({...props, spotterSecured: true, nextScreen: 'Match Endorse'});
+const MatchEndorse = (props) => EndorsementsScreen({...props, tab: 'Match'})
 
 export default function MatchStackNavigator(){
     return (
@@ -20,7 +21,7 @@ export default function MatchStackNavigator(){
       <Stack.Screen name="Match Profiles" component={MatchProfileScreen} />
       <Stack.Screen name="Match Bio" component={MatchBio} />
       <Stack.Screen name="Match Secured" component={SpotterSecured} />
-      <Stack.Screen name="Match Endorse" component={EndorsementsScreen} />
+      <Stack.Screen name="Match Endorse" component={MatchEndorse} />
       <Stack.Screen name="Match Finish Endorse" component={FinishEndorseScreen} />
     </Stack.Navigator>)
 }

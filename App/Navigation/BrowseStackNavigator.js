@@ -8,6 +8,7 @@ import EndorsementsScreen from '../Screens/EndorsementsScreen';
 const Stack = createStackNavigator();
 const BrowseBio = (props) => BioScreen({...props, spotterSecured: false, nextScreen: 'Browse Secured'});
 const SpotterSecured = (props) => BioScreen({...props, spotterSecured: true, nextScreen: 'Browse Endorse'});
+const BrowseEndorse = (props) => EndorsementsScreen({...props, tab: 'Browse'})
 
 export default function BrowseStackNavigator(){
     return (
@@ -16,7 +17,7 @@ export default function BrowseStackNavigator(){
       <Stack.Screen name="Browse" component={BrowseScreen} />
       <Stack.Screen name="Browse Bio" component={BrowseBio} />
       <Stack.Screen name="Browse Secured" component={SpotterSecured} />
-      <Stack.Screen name="Browse Endorse" component={EndorsementsScreen} />
+      <Stack.Screen name="Browse Endorse" component={BrowseEndorse} />
       <Stack.Screen name="Browse Finish Endorse" component={FinishEndorseScreen} />
     </Stack.Navigator>)
 }

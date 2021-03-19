@@ -70,6 +70,7 @@ export default class NotesScreen extends React.Component {
             selected={this.state.selectedTags}
             onSelect={this.onTagSelect} />
           <FlatList
+            directionalLockEnabled={true}
             keyExtractor={item => item.id}
             data={this.state.notes}
             renderItem={({ item }) => 

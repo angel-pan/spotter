@@ -62,7 +62,7 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.greetingText}>Hi {this.state.user},</Text>}
           <Text style={styles.welcomeBackText}>Welcome back!</Text>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} directionalLockEnabled={true}>
           <View style={styles.item}>
             <CurrentGym/>
           </View>

@@ -10,13 +10,13 @@ import { focusAreas } from '../Themes/Data';
 export default function MatchScreen({navigation}) {
     return (
       <Screen>
-        <Text style={styles.text}>What do you need help in today?</Text>
-        <SearchBar />
-        <View style={styles.activityList}>
-          {focusAreas.map((item) => <ActivityButton name={item} key={item} onPress={() => {
-            navigation.navigate('Loading Match', {name: item})
-          }}/>)}
-        </View>
+          <Text style={styles.text}>What do you need help in today?</Text>
+          <SearchBar />
+          <View style={styles.activityList}>
+            {focusAreas.map((item) => <ActivityButton name={item} key={item} onPress={() => {
+              navigation.navigate('Loading Match', {name: item})
+            }}/>)}
+          </View>
       </Screen>
     );
 }
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'center',
+    paddingBottom: '8%'
   },
   text: {
     fontFamily: 'OpenSans_700Bold',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0.4,
     marginBottom: "8%",
-    color: colors.black
+    color: colors.black,
   }
 
 });

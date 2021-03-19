@@ -5,9 +5,13 @@ import SpotterProfileTop from '../Components/SpotterProfileTop';
 import BackButton from '../Components/BackButton';
 import { Profiles, Metrics, Colors } from '../Themes';
 import DefaultButton from '../Components/DefaultButton';
+import { Session } from '../Themes/Data';
 
 
 export default function FinishEndorseScreen({navigation, route}) {
+    const session = new Session();
+    session.fromSpotterInfo(route.params.spotterInfo)
+    console.log(session)
     return (
         <Screen>
             <BackButton />
@@ -19,7 +23,7 @@ export default function FinishEndorseScreen({navigation, route}) {
                 <View style={styles.bottomHalf}>
                     <Text style={styles.thankYouTextTop}>Thank you for the</Text>
                     <Text style={styles.thankYouTextBottom}>feedback!</Text>
-                    <DefaultButton text="+ Add Note"/>
+                    <DefaultButton text="+ Add Note" onPress={() => navigation.navigate('Notes', {screen: 'Edit Note', params: {session: session}})}/>
                     <Text 
                       style={styles.backToHomeText} 
                       onPress={() => {

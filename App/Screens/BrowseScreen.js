@@ -60,9 +60,10 @@ export default class BrowseScreen extends React.Component {
             selected={this.state.selectedTags}
             onSelect={this.onTagSelect} />
           <FlatList
+            directionalLockEnabled={true}
             keyExtractor={(item) => item.name}
             data={this.state.spotters}
-            renderItem={({ item, index }) => 
+            renderItem={({ item }) => 
               <View style={{marginBottom: 8}}>
                 <BrowseCard spotterInfo={item}/>
               </View>

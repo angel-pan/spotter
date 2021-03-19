@@ -8,7 +8,7 @@ import DefaultButton from '../Components/DefaultButton';
 import EndorsementInput from '../Components/EndorsementInput';
 import ChooseEndorsements from '../Components/ChooseEndorsements';
 
-export default function EndorsementsScreen({navigation, route}) {
+export default function EndorsementsScreen({navigation, route, tab}) {
   return (
       <Screen>
           <BackButton />
@@ -21,7 +21,7 @@ export default function EndorsementsScreen({navigation, route}) {
                 <EndorsementInput />
                 <DefaultButton
                   text="Submit"
-                  onPress={() => navigation.navigate('Finish Endorse', route.params)}/>
+                  onPress={() => navigation.navigate(`${tab} Finish Endorse`, route.params)}/>
               </View>
 
           </View>
