@@ -8,6 +8,7 @@ import SearchBar from '../Components/SearchBar';
 import {Metrics, Colors} from '../Themes';
 import SessionCard from '../Components/SessionCard';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import NoSpotters from '../Components/NoSpotters';
 
 
 export default class NotesChooseSessionScreen extends React.Component {
@@ -35,17 +36,20 @@ export default class NotesChooseSessionScreen extends React.Component {
         <Text style={styles.text}>Spotting Notes</Text>
         <SearchBar />
         <Text style={styles.textSmall}>Session History</Text>
-        <FlatList
-          directionalLockEnabled={true}
-          keyExtractor={(item) => item.timestamp}
-          data={this.state.sessions}
-          renderItem={({ item }) => 
-            <TouchableOpacity 
-              style={{marginBottom: 8}} 
-              onPress={() => this.props.navigation.navigate('Edit Note', {session: item})}>
-                <SessionCard session={item} />
-            </TouchableOpacity>} 
-          showsVerticalScrollIndicator={false}/>
+        {this.state.sessions.length > 0 ? 
+          <FlatList
+            directionalLockEnabled={true}
+            keyExtractor={(item) => item.timestamp}
+            data={this.state.sessions}
+            renderItem={({ item }) => 
+              <TouchableOpacity 
+                style={{marginBottom: 8}} 
+                onPress={() => this.props.navigation.navigate('Edit Note', {session: item})}>
+                  <SessionCard session={item} />
+              </TouchableOpacity>} 
+            showsVerticalScrollIndicator={false}/> :
+          <NoSpotters text="Looks like you don't have any Spotting Sessions yet."/>
+        }
       </Screen>
     );
   }

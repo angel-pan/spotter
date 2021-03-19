@@ -9,6 +9,7 @@ import { completeSession } from '../Themes/Utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NotePreviewItem from '../Components/NotePreviewItem';
 import { Note } from '../Themes/Data';
+import NoRecentNotes from '../Components/NoRecentNotes';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -76,8 +77,9 @@ export default class HomeScreen extends React.Component {
               }}/>}
           </View>
           <View style={styles.item}>
-            {this.state.recentNote && 
-            <NotePreviewItem note={this.state.recentNote} header='Recent Notes'/>}
+            {this.state.recentNote ? 
+              <NotePreviewItem note={this.state.recentNote} header='Recent Notes'/> :
+              <NoRecentNotes />}
           </View>
           </ScrollView>
       </Screen>

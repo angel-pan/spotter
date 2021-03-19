@@ -3,11 +3,11 @@ import Icon from './Icon';
 import { Text, View, StyleSheet } from 'react-native';
 import colors from '../Themes/Colors';
 
-export default function NoSpotters() {
+export default function NoSpotters({text = 'There are no Spotters available at the moment.'}) {
     return (
       <View style={styles.container}>
         <Icon name='SadFace' size={168} color={colors.gray}/>
-        <Text style={styles.text}>There are no Spotters available at the moment.</Text>
+        <Text style={styles.text}>{text}</Text>
       </View>
     );
 }
