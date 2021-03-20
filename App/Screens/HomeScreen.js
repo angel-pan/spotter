@@ -44,8 +44,8 @@ export default class HomeScreen extends React.Component {
       .doc('testuser')
       .collection('notes')
       .orderBy('timestamp', 'desc')
-      .onSnapshot((snapshot) => this.setState({
-        recentNote: new Note(snapshot.docs[0])
+      .onSnapshot((snapshot) => snapshot.docs[0] && this.setState({
+         recentNote: new Note(snapshot.docs[0])
       }))
     );
     this.unsubscribe.push(
@@ -59,6 +59,7 @@ export default class HomeScreen extends React.Component {
     }
 
   render() {
+    console.log(this.state.recentNote)
     return (
       <Screen>
         <TouchableOpacity style={styles.faq} onPress={() => this.props.navigation.navigate('Faq')}>

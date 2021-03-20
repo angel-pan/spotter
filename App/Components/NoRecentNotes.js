@@ -13,7 +13,7 @@ export default function NoRecentNotes() {
               <DefaultButton 
                 text='+ Add Note' 
                 onPress={() => {
-                    navigation.navigate('Notes', {screen: 'Choose Session'});
+                    navigation.navigate('Notes', {screen: 'View Notes'});
                 }}/>
         </View>
     );

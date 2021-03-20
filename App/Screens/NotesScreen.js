@@ -9,6 +9,7 @@ import {Note, focusAreas} from '../Themes/Data';
 import DefaultButton from '../Components/DefaultButton';
 import firestore from '../../firebase';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import NoSpotters from '../Components/NoSpotters';
 
 
 export default class NotesScreen extends React.Component {
@@ -69,6 +70,7 @@ export default class NotesScreen extends React.Component {
             tags={this.state.tags} 
             selected={this.state.selectedTags}
             onSelect={this.onTagSelect} />
+          {this.state.notes.length > 0 ? 
           <FlatList
             directionalLockEnabled={true}
             keyExtractor={item => item.id}
@@ -80,7 +82,8 @@ export default class NotesScreen extends React.Component {
                   <NotesPreviewItem note={item} />
               </TouchableOpacity>
             } 
-            showsVerticalScrollIndicator={false}/>
+            showsVerticalScrollIndicator={false}/> :
+            <NoSpotters text="Looks like you don't have any notes yet."/>}
             <View style={{alignItems: 'center'}}>
               <DefaultButton 
                 text='+ Add Note' 
